@@ -1,0 +1,62 @@
+export interface CasaPropiaTypes {
+  casaPropiaRecord: [string, number][];
+  casaPropiaRecordCount: number;
+  startDate: string;
+  endDate: string;
+  title: string;
+  source: string;
+}
+
+const casaPropiaRecord: [string, number][] = [
+  ["2023-03-01", 1.049],
+  ["2023-04-01", 1.0504],
+  ["2023-05-01", 1.0505],
+  ["2023-06-01", 1.0522],
+  ["2023-07-01", 1.0557],
+  ["2023-08-01", 1.0558],
+  ["2023-09-01", 1.0571],
+  ["2023-10-01", 1.0576],
+  ["2023-11-01", 1.0628],
+  ["2023-12-01", 1.0637],
+  ["2024-01-01", 1.0689],
+  ["2024-02-01", 1.0708],
+  ["2024-03-01", 1.0727],
+  ["2024-04-01", 1.0749],
+  ["2024-05-01", 1.0859],
+  ["2024-06-01", 1.092],
+  ["2024-07-01", 1.0921],
+  ["2024-08-01", 1.0939],
+  ["2024-09-01", 1.0924],
+  ["2024-10-01", 1.089],
+  ["2024-11-01", 1.0858],
+  ["2024-12-01", 1.082],
+  ["2025-01-01", 1.0708],
+  ["2025-02-01", 1.0719],
+  ["2025-03-01", 1.0671],
+  ["2025-04-01", 1.0622],
+  ["2025-05-01", 1.0545],
+  ["2025-06-01", 1.0491],
+  ["2025-07-01", 1.044],
+  ["2025-08-01", 1.0378],
+  ["2025-09-01", 1.0328],
+  ["2025-10-01", 1.0306],
+  ["2025-11-01", 1.0281],
+  ["2025-12-01", 1.0264],
+  ["2026-01-01", 1.0244],
+  ["2026-02-01", 1.0233],
+  ["2026-03-01", 1.0229],
+  ["2026-04-01", 1.0227],
+  ["2026-05-01", 1.0229],
+];
+
+const casaPropiaDataData: CasaPropiaTypes = {
+  title: "Coeficiente de actualización de los Créditos Casa Propia",
+  source: "Ministerio de Economía - Secretaría de Obras Públicas",
+  casaPropiaRecord: casaPropiaRecord,
+  casaPropiaRecordCount: casaPropiaRecord.length,
+  startDate: casaPropiaRecord[0][0],
+  endDate: casaPropiaRecord[casaPropiaRecord.length - 1][0],
+};
+export const useCasaPropia = () => {
+  return casaPropiaDataData;
+};
