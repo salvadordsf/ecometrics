@@ -1,36 +1,32 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Ecometrics
 
-## Getting Started
+Ecometrics es una aplicación web para cálculos económicos, incluyendo calculadoras de alquiler, inflación y poder adquisitivo, utilizando datos de la API externa del Banco Central de la República Argentina.
 
-First, run the development server:
+## Características
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **Calculadora de Alquiler**: Calcula el alquiler basado en datos oficiales del Coeficiente Casa Propia, ICL o por IPC (inflación).
+- **Calculadora de Inflación**: Calcula la inflación acumulada entre fechas.
+- **Calculadora de Poder Adquisitivo**: Evalúa el poder adquisitivo considerando la inflación.
+- Integración con APIs externas para datos económicos precisos.
+- Interfaz de usuario moderna con componentes reutilizables.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tecnologías Utilizadas
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js**: Framework de React para aplicaciones web.
+- **TypeScript**: Para tipado estático.
+- **Tailwind CSS**: Para estilos.
+- **React Query**: Para gestión de estado y consultas.
+- **Axios**: Para llamadas a APIs.
+- **Zod**: Para validación de esquemas.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Sitio Web
 
-## Learn More
+Puedes acceder a la aplicación en funcionamiento en: [https://ecometrics-snowy.vercel.app/](https://ecometrics-snowy.vercel.app/)
 
-To learn more about Next.js, take a look at the following resources:
+## Autor
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Salvador Di Sabatto**  
+Desarrollador fullstack especializado en aplicaciones web modernas, con experiencia en arquitecturas escalables, APIs robustas y manejo de datos en tiempo real.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Portafolio: [https://salvadordisabatto.com.ar](https://salvadordisabatto.com.ar)  
+LinkedIn: [https://www.linkedin.com/in/salvador-di-sabatto-fund-0b1bb9398/](https://www.linkedin.com/in/salvador-di-sabatto-fund-0b1bb9398/)
