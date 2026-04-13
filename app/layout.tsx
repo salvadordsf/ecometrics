@@ -32,7 +32,7 @@ export default function RootLayout({
       lang="es"
       className={`${instrumentSerif.variable} ${dmMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full flex flex-col bg-gray-950 text-gray-50 font-[family-name:var(--font-mono)]">
+      <body className="min-h-full flex flex-col  text-gray-50 font-[family-name:var(--font-mono)]">
         <GlobalProvider>
           <Header />
           {children}

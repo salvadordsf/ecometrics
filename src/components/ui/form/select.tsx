@@ -10,6 +10,7 @@ interface SelectProps {
   options: SelectOption[];
   selectKey?: string;
   className?: string;
+  label: string;
 }
 
 export const UiSelect = ({
@@ -17,11 +18,16 @@ export const UiSelect = ({
   options,
   selectKey,
   className,
+  label,
 }: SelectProps) => (
-  <select
-    key={selectKey}
-    {...registration}
-    className={`
+  <div className="flex flex-col gap-1.5">
+    <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-gray-500">
+      {label}
+    </span>
+    <select
+      key={selectKey}
+      {...registration}
+      className={`
       w-1/2 rounded-md border border-gray-700 bg-gray-950 px-3 py-3.5
       text-[13px] font-medium text-gray-50
       hover:border-gray-600 focus:border-amber-600 focus:ring-2 focus:ring-amber-600/15
@@ -31,11 +37,12 @@ export const UiSelect = ({
       bg-no-repeat bg-[right_12px_center]
       ${className ?? ""}
     `}
-  >
-    {options.map(({ value, label }) => (
-      <option key={value} value={value} className="bg-gray-900 text-gray-50">
-        {label}
-      </option>
-    ))}
-  </select>
+    >
+      {options.map(({ value, label }) => (
+        <option key={value} value={value} className="bg-gray-900 text-gray-50">
+          {label}
+        </option>
+      ))}
+    </select>
+  </div>
 );

@@ -111,7 +111,7 @@ export const PurchasingPowerForm = () => {
   }
 
   return (
-    <div>
+    <div className="mb-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-md mx-auto p-4 space-y-5"

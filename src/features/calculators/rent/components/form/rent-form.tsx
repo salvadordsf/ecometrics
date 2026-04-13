@@ -151,7 +151,7 @@ export const RentForm = () => {
     );
 
   return (
-    <div>
+    <div className="mb-10">
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full max-w-md mx-auto p-4 space-y-5"
@@ -184,6 +184,7 @@ export const RentForm = () => {
         {/* How often (in months) the rent amount gets updated */}
         <div className="space-y-2">
           <UiSelect
+            label="Se actualiza cada x/meses"
             registration={register("updateInterval", { valueAsNumber: true })}
             options={Array.from({ length: 12 }, (_, i) => ({
               value: i + 1,
@@ -197,8 +198,8 @@ export const RentForm = () => {
         {/* Which economic index to use for rent updates.
             Changing this resets the date selects via useResetDateOnIndexChange */}
         <div className="space-y-2">
-          <p className="text-sm font-medium">Índice de actualización</p>
           <UiSelect
+            label="Índice de actualización"
             className="w-full"
             registration={register("updateIndex")}
             options={[
