@@ -69,13 +69,6 @@ export const rentByCasaPropia = (
     const isUpdateMonth = (i + 1) % updateInterval === 0;
     const prevAmount = resultRecords[resultRecords.length - 1].amount;
     const amount = prevAmount * coeficiente;
-    console.log({date: recordDate,
-      amount,
-      coeficiente,
-      variation: ((amount - prevAmount) / prevAmount) * 100,
-      increase: amount - prevAmount,
-      isUpdateMonth,
-      isStartDate: false,})
     
     resultRecords.push({
       date: recordDate,

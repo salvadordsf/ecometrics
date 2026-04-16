@@ -10,7 +10,7 @@ export const getLastBADLAR = async (): Promise<ILastBADLAR> => {
     const res = await axios.get<LastBADLARResponseTypes>(lastDateUrl);
 
     const data = res.data.results[0].detalle[0];
-    console.log(data)
+  
     const finalRes = {
       title: "Tasa de interés BADLAR de bancos privados",
       periodicity: "daily",
@@ -24,7 +24,6 @@ export const getLastBADLAR = async (): Promise<ILastBADLAR> => {
       },
     };
 
-    console.log(finalRes);
     return finalRes;
   } catch (error) {
     throw new Error("Error fetching BADLAR.");

@@ -24,7 +24,6 @@ export const getLastGIR = async (): Promise<ILastGIR> => {
       },
     };
 
-    console.log(finalRes);
     return finalRes;
   } catch (error) {
     throw new Error("Error fetching GIR.");
