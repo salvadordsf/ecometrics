@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useLastInflation } from "@/src/services/INFLATION/services/inflation-query";
 import { useLastBADLAR } from "@/src/services/BADLAR/services/badlar-querys";
 import { getTRM } from "../../economic-calcs/badlar-calcs";
+import { MainVarCardSkeleton } from "./main-var-card-skeleton";
 
 export const RealRateARSCard = () => {
   // Fetch last Inflation record
@@ -38,7 +39,7 @@ export const RealRateARSCard = () => {
   }, [lastInflation, lastBADLAR, setRealRateStatus]);
 
   if (isLoadingInflation || isLoadingBADLAR)
-    return <p>Cargando inflacion y BADLAR</p>;
+    return <MainVarCardSkeleton />;
   if (
     isErrorInflation ||
     isErrorBADLAR ||

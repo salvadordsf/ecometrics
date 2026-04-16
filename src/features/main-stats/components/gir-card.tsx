@@ -3,6 +3,7 @@
 import { useLastGIR } from "@/src/services/GIR/services/gir-querys";
 import { MainVarStateCard } from "./main-var-state-card";
 import { useEffect, useState } from "react";
+import { MainVarCardSkeleton } from "./main-var-card-skeleton";
 
 export const GirCard = () => {
   // Fetch last GIR record
@@ -20,7 +21,7 @@ export const GirCard = () => {
       );
   }, [lastGIR, setGirStatus]);
 
-  if (isLoading) return <p>Cargando GIR</p>;
+  if (isLoading) return <MainVarCardSkeleton />;
   if (isError || !lastGIR || !girStatus) return <p>Error al cargar GIR</p>;
   return (
     <MainVarStateCard stateColor={girStatus} title={lastGIR.title}>

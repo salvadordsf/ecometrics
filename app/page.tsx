@@ -60,6 +60,10 @@ export default function Home() {
         <div className="w-full flex flex-col gap-1.5 mt-4">
           {[
             {
+              label: "Salud de la macroeconomía",
+              href: "/estadisticas-principales",
+            },
+            {
               label: "Calculadora de inflación acumulada",
               href: "/calculadoras/inflacion",
             },

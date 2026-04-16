@@ -3,6 +3,7 @@
 import { useUSDVariation } from "@/src/services/USD/services/usd-query";
 import { MainVarStateCard } from "./main-var-state-card";
 import { useEffect, useState } from "react";
+import { MainVarCardSkeleton } from "./main-var-card-skeleton";
 
 export const UsdVariationCard = () => {
   // Fetch last Inflation record
@@ -24,7 +25,7 @@ export const UsdVariationCard = () => {
       );
   }, [usdVariation, setUsdVariationStatus]);
 
-  if (isLoading) return <p>Cargando USD variacion</p>;
+  if (isLoading) return <MainVarCardSkeleton />;
   if (isError || !usdVariation || !usdVariationStatus)
     return <p>Error al cargar GIR</p>;
   return (
