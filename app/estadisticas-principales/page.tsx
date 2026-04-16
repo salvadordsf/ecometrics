@@ -1,5 +1,6 @@
 import { Title } from "@/src/components/ui/title";
 import { GirCard } from "@/src/features/main-stats/components/gir-card";
+import { InflationCard } from "@/src/features/main-stats/components/inflation-card";
 
 export default function MainEconomicsStats() {
   return (
@@ -7,7 +8,7 @@ export default function MainEconomicsStats() {
       <Title title="Salud Macroeconómica Argentina" label="Principales estadísticas" />
       <div className="flex flex-wrap justify-center gap-5">
         <GirCard />
-        <GirCard />
+        <InflationCard />
         <GirCard />
         <GirCard />
       </div>

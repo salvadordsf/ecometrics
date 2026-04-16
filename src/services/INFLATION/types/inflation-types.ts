@@ -26,6 +26,19 @@ export interface Detalle {
 }
 
 // Inflation returned data types
+export interface ILastInflation {
+  title: string;
+  periodicity: string;
+  unit: string;
+  value: number;
+  lastDate: string;
+  labels: {
+    periodicity: string;
+    unit: string;
+    lastDate: string;
+  };
+}
+
 export interface InflationDataInf {
   inflationRecord: InflationRecord[];
   inflationRecordCount: number;

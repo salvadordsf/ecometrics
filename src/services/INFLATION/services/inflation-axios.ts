@@ -1,8 +1,37 @@
 import axios from "axios";
 import {
+  ILastInflation,
   InflationDataInf,
   InflationResponseType,
 } from "../types/inflation-types";
+import { formatDate } from "@/src/utils/formate-date-es";
+
+export const getLastInflation = async (): Promise<ILastInflation> => {
+  try {
+    const res = await axios.get<InflationResponseType>(
+      "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/27?limit=1",
+    );
+
+    const data = res.data.results[0];
+
+    const finalRes = {
+      title: "Inflación mensual",
+      periodicity: "monthly",
+      unit: "%",
+      value: data.detalle[0].valor,
+      lastDate: data.detalle[0].fecha,
+      labels: {
+        periodicity: "mensual",
+        unit: "%",
+        lastDate: formatDate(data.detalle[0].fecha),
+      },
+    };
+
+    return finalRes;
+  } catch (error) {
+    throw new Error("Error fetching GIR.");
+  }
+};
 
 export const getInflation = async (): Promise<InflationDataInf> => {
   try {
