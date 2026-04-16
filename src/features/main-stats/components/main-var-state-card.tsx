@@ -25,7 +25,7 @@ export const MainVarStateCard = ({
     : "text-green-300";
 
   return (
-    <div className={clsx("flex flex-col items-center gap-1 w-90 p-4 border rounded-xl", cardClass)}>
+    <div className={clsx("flex flex-col items-center justify-center gap-1 w-90 p-4 border rounded-xl", cardClass)}>
       <h3 className="text-white font-bold">{title}</h3>
       <div className={textClass}>
         {children}
