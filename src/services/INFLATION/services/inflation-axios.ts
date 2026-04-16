@@ -29,7 +29,7 @@ export const getLastInflation = async (): Promise<ILastInflation> => {
 
     return finalRes;
   } catch (error) {
-    throw new Error("Error fetching GIR.");
+    throw new Error("Error fetching Inflation.");
   }
 };
 
@@ -55,6 +55,6 @@ export const getInflation = async (): Promise<InflationDataInf> => {
 
     return finalRes;
   } catch (error) {
-    throw new Error("Error fetching IPC.");
+    throw new Error("Error fetching Inflation.");
   }
 };

@@ -7,7 +7,7 @@ import { useLastInflation } from "@/src/services/INFLATION/services/inflation-qu
 export const InflationCard = () => {
   // Fetch last Inflation record
   const { data: lastInflation, isLoading, isError } = useLastInflation();
-  const [girStatus, setGirStatus] = useState<"red" | "yellow" | "green" | null>(
+  const [inflationStatus, setInflationStatus] = useState<"red" | "yellow" | "green" | null>(
     null,
   );
 
@@ -15,15 +15,15 @@ export const InflationCard = () => {
   useEffect(() => {
     const inflationValue = lastInflation ? lastInflation.value : null;
     if (inflationValue)
-      setGirStatus(
-        inflationValue > 6 ? "red" : inflationValue > 3 ? "yellow" : "red",
+      setInflationStatus(
+        inflationValue > 6 ? "red" : inflationValue > 3 ? "yellow" : "green",
       );
-  }, [lastInflation, setGirStatus]);
+  }, [lastInflation, setInflationStatus]);
 
-  if (isLoading) return <p>Cargando GIR</p>;
-  if (isError || !lastInflation || !girStatus) return <p>Error al cargar GIR</p>;
+  if (isLoading) return <p>Cargando inflacion</p>;
+  if (isError || !lastInflation || !inflationStatus) return <p>Error al cargar inflacion</p>;
   return (
-    <MainVarStateCard stateColor={girStatus} title={lastInflation.title}>
+    <MainVarStateCard stateColor={inflationStatus} title={lastInflation.title}>
       <div className="flex flex-col items-center">
         <span className="text-xl">
           <span className="font-bold">{lastInflation.value} </span>
