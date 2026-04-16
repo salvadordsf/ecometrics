@@ -1,7 +1,7 @@
 // src/components/ui/loader.tsx
 export const Loader = () => {
   return (
-    <div className="flex items-center justify-center min-h-screen bg-zinc-950">
+    <div className="flex items-center justify-center min-h-screen">
       <div className="flex flex-col items-center gap-6">
         {/* Spinner */}
         <div className="relative w-16 h-16">
