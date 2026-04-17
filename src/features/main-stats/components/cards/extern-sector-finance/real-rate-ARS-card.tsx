@@ -1,11 +1,11 @@
 "use client";
 
-import { MainVarStateCard } from "./main-var-state-card";
+import { MainVarStateCard } from "../main-var-state-card";
 import { useEffect, useState } from "react";
 import { useLastInflation } from "@/src/services/INFLATION/services/inflation-query";
 import { useLastBADLAR } from "@/src/services/BADLAR/services/badlar-querys";
-import { getTRM } from "../../economic-calcs/badlar-calcs";
-import { MainVarCardSkeleton } from "./main-var-card-skeleton";
+import { getTRM } from "../../../../economic-calcs/badlar-calcs";
+import { MainVarCardSkeleton } from "../../main-var-card-skeleton";
 
 export const RealRateARSCard = () => {
   // Fetch last Inflation record

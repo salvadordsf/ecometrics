@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
-import { getLastUSDExchange, getUSDVariation } from "./usd-axios";
+import { getARSDeposits, getMEDeposits } from "./deposits-axios";
 
-export const useUSDSExchange = () => {
+export const useARSDeposits = () => {
   return useQuery({
-    queryKey: ["usdsExchange"],
-    queryFn: getLastUSDExchange,
+    queryKey: ["ARSDeposits"],
+    queryFn: getARSDeposits,
 
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
@@ -13,10 +13,10 @@ export const useUSDSExchange = () => {
   });
 };
 
-export const useUSDVariation = () => {
+export const useMEDeposits = () => {
   return useQuery({
-    queryKey: ["usdVariation"],
-    queryFn: getUSDVariation,
+    queryKey: ["MEDeposits"],
+    queryFn: getMEDeposits,
 
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,

@@ -1,3 +1,48 @@
+// DOLARAPI
+// USD response types
+export type USDSExchangeResponseType = USDS[];
+
+export interface USDS {
+  moneda: string;
+  casa: string;
+  nombre: string;
+  compra: number;
+  venta: number;
+  fechaActualizacion: string;
+}
+
+// USD returned data types
+export interface IUSDSExchangeReturn {
+  title: "Cotización Dólares";
+  periodicity: "d";
+  unit: "ARS";
+  lastDate: string;
+  labels: {
+    periodicity: "diaria";
+    unit: "ARS";
+    lastDate: string;
+  };
+  values: {
+    oficial: IUSDExchange;
+    blue: IUSDExchange;
+    bolsa: IUSDExchange;
+    CCL: IUSDExchange;
+    mayorista: IUSDExchange;
+    cripto: IUSDExchange;
+    tarjeta: IUSDExchange;
+  };
+}
+
+export interface IUSDExchange {
+  title: string;
+  unit: "ARS";
+  values: {
+    buy: number;
+    sale: number;
+  };
+}
+
+//BCRA
 // USD response types
 export interface USDResponseType {
   status: number;

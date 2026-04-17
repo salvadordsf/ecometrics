@@ -6,9 +6,9 @@ export const Title = ({ title, label }: { title: string; label?: string }) => {
           {label}
         </span>
       )}
-      <h2 className="text-2xl font-semibold text-gray-50 tracking-tight">
+      <h1 className="text-2xl font-semibold text-gray-50 tracking-tight">
         {title}
-      </h2>
+      </h1>
       <div className="h-px w-full bg-gradient-to-r from-transparent via-amber-600 to-transparent" />
     </div>
   );

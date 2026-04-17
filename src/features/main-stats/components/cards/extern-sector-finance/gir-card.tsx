@@ -1,9 +1,10 @@
 "use client";
 
 import { useLastGIR } from "@/src/services/GIR/services/gir-querys";
-import { MainVarStateCard } from "./main-var-state-card";
 import { useEffect, useState } from "react";
-import { MainVarCardSkeleton } from "./main-var-card-skeleton";
+import { MainVarCardSkeleton } from "../../main-var-card-skeleton";
+import { MainVarStateCard } from "../main-var-state-card";
+
 
 export const GirCard = () => {
   // Fetch last GIR record
