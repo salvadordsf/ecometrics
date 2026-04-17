@@ -6,6 +6,7 @@ import {
 } from "../types/inflation-types";
 import { formatDate } from "@/src/utils/formate-date-es";
 
+// Last month inflation
 export const getLastInflation = async (): Promise<ILastInflation> => {
   try {
     const res = await axios.get<InflationResponseType>(
@@ -33,6 +34,63 @@ export const getLastInflation = async (): Promise<ILastInflation> => {
   }
 };
 
+// Last interannual inflation
+export const getLastAnnualInflation = async (): Promise<ILastInflation> => {
+  try {
+    const res = await axios.get<InflationResponseType>(
+      "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/28?limit=1",
+    );
+
+    const data = res.data.results[0];
+
+    const finalRes = {
+      title: "Inflación interanual",
+      periodicity: "monthly",
+      unit: "%",
+      value: data.detalle[0].valor,
+      lastDate: data.detalle[0].fecha,
+      labels: {
+        periodicity: "mensual",
+        unit: "%",
+        lastDate: formatDate(data.detalle[0].fecha),
+      },
+    };
+
+    return finalRes;
+  } catch (error) {
+    throw new Error("Error fetching annual Inflation.");
+  }
+};
+
+// Last interannual inflation
+export const getREMInflation = async (): Promise<ILastInflation> => {
+  try {
+    const res = await axios.get<InflationResponseType>(
+      "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/29?limit=1",
+    );
+
+    const data = res.data.results[0];
+
+    const finalRes = {
+      title: "Expectativas de inflación a 12 meses (REM)",
+      periodicity: "monthly",
+      unit: "%",
+      value: data.detalle[0].valor,
+      lastDate: data.detalle[0].fecha,
+      labels: {
+        periodicity: "mensual",
+        unit: "%",
+        lastDate: formatDate(data.detalle[0].fecha),
+      },
+    };
+
+    return finalRes;
+  } catch (error) {
+    throw new Error("Error fetching annual Inflation.");
+  }
+};
+
+//Get all the inflation records
 export const getInflation = async (): Promise<InflationDataInf> => {
   try {
     const res = await axios.get<InflationResponseType>(
