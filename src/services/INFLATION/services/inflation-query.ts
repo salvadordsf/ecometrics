@@ -42,10 +42,10 @@ export const useLastREMInflation = () => {
   });
 };
 
-export const useInflation = () => {
+export const useInflation = (limit = 3000) => {
   return useQuery({
-    queryKey: ["inflation"],
-    queryFn: getInflation,
+    queryKey: ["inflation", limit],
+    queryFn: () => getInflation(limit),
 
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,

@@ -1,22 +1,23 @@
 import axios from "axios";
 import { formatDate } from "@/src/utils/formate-date-es";
-import {
-  DepositsResponseType,
-  ARSDepositsReturnType,
-  MEDepositsReturnType,
-} from "../types/deposits-types";
+import { IBCRAResponse } from "@/src/types/bcra-response-types";
+import { ILastRecordResponse } from "@/src/types/domain-types";
 
-const ARSDepositsUrl =
+const ML_DEPOSITS_URL =
   "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/100?limit=1";
 
-export const getARSDeposits = async (): Promise<ARSDepositsReturnType> => {
+const ME_DEPOSITS_URL =
+  "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/104?limit=1";
+
+export const getARSDeposits = async (): Promise<ILastRecordResponse> => {
   try {
-    const res = await axios.get<DepositsResponseType>(ARSDepositsUrl);
+    const res = await axios.get<IBCRAResponse>(ML_DEPOSITS_URL);
 
     const data = res.data.results[0].detalle[0];
 
-    const finalRes: ARSDepositsReturnType = {
+    const finalRes: ILastRecordResponse = {
       title: "Depósitos del sector privado ML no financiero (incluye cedros)",
+      source: "Banco Central de la República Argentina (BCRA)",
       periodicity: "daily",
       unit: "Millions ARS",
       value: data.valor,
@@ -34,17 +35,15 @@ export const getARSDeposits = async (): Promise<ARSDepositsReturnType> => {
   }
 };
 
-const MEDepositsUrl =
-  "https://api.bcra.gob.ar/estadisticas/v4.0/Monetarias/104?limit=1";
-
-export const getMEDeposits = async (): Promise<MEDepositsReturnType> => {
+export const getMEDeposits = async (): Promise<ILastRecordResponse> => {
   try {
-    const res = await axios.get<DepositsResponseType>(MEDepositsUrl);
+    const res = await axios.get<IBCRAResponse>(ME_DEPOSITS_URL);
 
     const data = res.data.results[0].detalle[0];
 
-    const finalRes: MEDepositsReturnType = {
+    const finalRes: ILastRecordResponse = {
       title: "Depósitos del sector privado ME no financiero",
+      source: "Banco Central de la República Argentina (BCRA)",
       periodicity: "daily",
       unit: "Millions ARS",
       value: data.valor,
@@ -58,6 +57,6 @@ export const getMEDeposits = async (): Promise<MEDepositsReturnType> => {
 
     return finalRes;
   } catch (error) {
-    throw new Error("Error fetching GIR.");
+    throw new Error("Error al obtener Depositos del sector privado no financiero del BCRA. Intente más tarde.")
   }
 };
