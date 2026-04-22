@@ -103,10 +103,10 @@ export const RentForm = () => {
     // Select the record array that corresponds to the chosen index
     const activeRecord =
       updateIndex === "IPC"
-        ? inflationData?.inflationRecord
+        ? inflationData?.record
         : updateIndex === "ICL"
-          ? iclData?.iclRecord
-          : casaPropiaData?.casaPropiaRecord;
+          ? iclData?.record
+          : casaPropiaData?.record;
 
     if (!activeRecord) return;
 

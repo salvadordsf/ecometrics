@@ -1,4 +1,4 @@
-import { InflationRecord } from "../../services/INFLATION/types/inflation-types";
+import { RecordType } from "@/src/types/domain-types";
 import { createInflationMap } from "./utils/inflation-maper";
 
 interface InflationInput {
@@ -38,7 +38,7 @@ export interface InflationResultType {
 
 export const calculateInflation = (
   input: InflationInput,
-  inflationRecord: InflationRecord[],
+  inflationRecord: RecordType[],
 ): InflationResultType => {
   const { startMonth, startYear, endMonth, endYear, amount } = input;
 

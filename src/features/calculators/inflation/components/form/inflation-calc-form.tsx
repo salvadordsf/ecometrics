@@ -27,7 +27,7 @@ export const InflationForm = () => {
   const [result, setResult] = useState<InflationResultType | null>(null);
 
   // Fetch monthly inflation records from the BCRA API
-  const { data: inflationData, isLoading, isError } = useInflation();
+  const { data: inflation, isLoading, isError } = useInflation();
 
   const {
     register,
@@ -45,11 +45,11 @@ export const InflationForm = () => {
 
   // Extract the min/max year and month boundaries from the dataset
   const { startYearMin, startMonthMin, endYearMax, endMonthMax } =
-    getDataBounds(inflationData);
+    getDataBounds(inflation);
 
   // Both start and end share the same full year range
-  const startYearOptions = useYearOptions(inflationData);
-  const endYearOptions = useYearOptions(inflationData);
+  const startYearOptions = useYearOptions(inflation);
+  const endYearOptions = useYearOptions(inflation);
 
   // Month options are filtered based on the selected year and the dataset boundaries
   const startMonthOptions = useMonthOptions(
@@ -70,10 +70,10 @@ export const InflationForm = () => {
   // Once the inflation data is available, initialize the form with the full available range
   // startDate is the oldest record, endDate is the most recent
   useEffect(() => {
-    if (!inflationData) return;
+    if (!inflation) return;
 
-    const start = new Date(inflationData.startDate);
-    const end = new Date(inflationData.endDate);
+    const start = new Date(inflation.startDate);
+    const end = new Date(inflation.endDate);
 
     reset({
       startYear: start.getFullYear(),
@@ -82,12 +82,12 @@ export const InflationForm = () => {
       endMonth: end.getMonth() + 1,
       amount: 10000,
     });
-  }, [inflationData, reset]);
+  }, [inflation, reset]);
 
   // Run the inflation calculation and store the result for display
   const onSubmit = (data: InflationFormType) => {
-    if (inflationData) {
-      const result = calculateInflation(data, inflationData.inflationRecord);
+    if (inflation) {
+      const result = calculateInflation(data, inflation.record);
       setResult(result);
     }
   };
@@ -98,7 +98,7 @@ export const InflationForm = () => {
   }
 
   // Show error state if the fetch failed or returned no data
-  if (!inflationData || isError) {
+  if (!inflation || isError) {
     return (
       <div className="text-center py-10">Error al intentar obtener datos</div>
     );

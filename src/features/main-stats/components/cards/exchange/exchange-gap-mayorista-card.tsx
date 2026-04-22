@@ -4,6 +4,7 @@ import { useUSDSExchange } from "@/src/services/USD/services/usd-query";
 import { MainVarStateCard } from "../main-var-state-card";
 import { useEffect, useState } from "react";
 import { MainVarCardSkeleton } from "../../main-var-card-skeleton";
+import { ErrorVarCard } from "../error-card";
 
 export const MayoristaGapCard = () => {
   // Fetch last USDS exhanges
@@ -30,7 +31,7 @@ export const MayoristaGapCard = () => {
 
   if (isLoading) return <MainVarCardSkeleton />;
   if (isError || !usdsExchanges || !exchangeGapState || !exchangeGap)
-    return <p>Error al cargar usds</p>;
+    return <ErrorVarCard title="Brecha Mayorista (Mayorista / Oficial)" api="dolar"/>
   return (
     <MainVarStateCard
       stateColor={exchangeGapState}

@@ -1,4 +1,4 @@
-import { InflationRecord } from "../../services/INFLATION/types/inflation-types";
+import { RecordType } from "@/src/types/domain-types";
 import { createInflationMap } from "./utils/inflation-maper";
 
 interface PurchasingPowerInput {
@@ -40,7 +40,7 @@ export interface PurchasingPowerResultType {
 
 export const calculatePurchasingPower = (
   input: PurchasingPowerInput,
-  inflationRecord: InflationRecord[],
+  inflationRecord: RecordType[],
 ): PurchasingPowerResultType => {
   const { startMonth, startYear, endMonth, endYear, startAmount, endAmount } =
     input;

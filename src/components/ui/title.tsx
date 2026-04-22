@@ -1,4 +1,4 @@
-export const Title = ({ title, label }: { title: string; label?: string }) => {
+export const Title = ({ title, label= "" }: { title: string; label?: string }) => {
   return (
     <div className="max-w-2xl flex flex-col items-center gap-2 mb-6">
       {label && (

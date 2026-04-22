@@ -13,6 +13,7 @@ import { MayoristaGapCard } from "./cards/exchange/exchange-gap-mayorista-card";
 import { DepositDolarizationCard } from "./cards/extern-sector-finance/deposit-dolarization-card";
 import { UsdVariationCard } from "./cards/exchange/usd-variation";
 import { RealRateARSCard } from "./cards/extern-sector-finance/real-rate-ARS-card";
+import { InflationVarCard } from "./cards/inflation/var-inflation-card";
 
 const VAR_LABEL = [
   {
@@ -88,6 +89,7 @@ export default function MainEconomicsStats() {
           title="Precios"
           cards={[
             <InflationCard />,
+            <InflationVarCard />,
             <AnnualInflationCard />,
             <REMAnnualInflation />,
           ]}

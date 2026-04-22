@@ -4,6 +4,7 @@ import { MainVarStateCard } from "../main-var-state-card";
 import { useEffect, useState } from "react";
 import { useLastInflation } from "@/src/services/INFLATION/services/inflation-query";
 import { MainVarCardSkeleton } from "../../main-var-card-skeleton";
+import { ErrorVarCard } from "../error-card";
 
 export const InflationCard = () => {
   // Fetch last Inflation record
@@ -22,7 +23,7 @@ export const InflationCard = () => {
   }, [lastInflation, setInflationStatus]);
 
   if (isLoading) return <MainVarCardSkeleton />;
-  if (isError || !lastInflation || !inflationStatus) return <p>Error al cargar inflacion</p>;
+  if (isError || !lastInflation || !inflationStatus) return <ErrorVarCard title="Inflación mensual" api="bcra"/>
   return (
     <MainVarStateCard stateColor={inflationStatus} title={lastInflation.title}>
       <div className="flex flex-col items-center">

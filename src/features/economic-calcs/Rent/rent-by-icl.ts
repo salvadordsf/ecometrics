@@ -1,9 +1,9 @@
-import { AnyRecord } from "@/src/types/any-record";
+import { RecordType } from "@/src/types/domain-types";
 import { RentFormType } from "../../calculators/rent/schemas/rent-form-schema";
 
 // Extends the form data with the filtered ICL records for the selected period
 interface RentByIclParams extends RentFormType {
-  records: AnyRecord[];
+  records: RecordType[];
 }
 
 // Represents a single month entry in the ICL rent calculation result
@@ -55,7 +55,7 @@ export const rentByIcl = (data: RentByIclParams): RentByIclResult => {
         }
         return acc;
       },
-      {} as Record<string, AnyRecord>,
+      {} as Record<string, RecordType>,
     ),
   );
 

@@ -6,6 +6,7 @@ import { useLastInflation } from "@/src/services/INFLATION/services/inflation-qu
 import { useLastBADLAR } from "@/src/services/BADLAR/services/badlar-querys";
 import { getTRM } from "../../../../economic-calcs/badlar-calcs";
 import { MainVarCardSkeleton } from "../../main-var-card-skeleton";
+import { ErrorVarCard } from "../error-card";
 
 export const RealRateARSCard = () => {
   // Fetch last Inflation record
@@ -47,7 +48,7 @@ export const RealRateARSCard = () => {
     !lastBADLAR ||
     !realRateStatus
   )
-    return <p>Error al cargar inflacion</p>;
+    return <ErrorVarCard title="Tasa real mensual en pesos" api="bcra"/>
   return (
     <MainVarStateCard stateColor={realRateStatus} title="Tasa real mensual en pesos">
       <div className="flex flex-col items-center gap-2">

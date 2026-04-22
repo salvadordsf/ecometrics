@@ -1,13 +1,6 @@
-export interface CasaPropiaTypes {
-  casaPropiaRecord: [string, number][];
-  casaPropiaRecordCount: number;
-  startDate: string;
-  endDate: string;
-  title: string;
-  source: string;
-}
+import { IRecordResponse, RecordType } from "../types/domain-types";
 
-const casaPropiaRecord: [string, number][] = [
+const casaPropiaRecord: RecordType[] = [
   ["2023-03-01", 1.049],
   ["2023-04-01", 1.0504],
   ["2023-05-01", 1.0505],
@@ -49,11 +42,11 @@ const casaPropiaRecord: [string, number][] = [
   ["2026-05-01", 1.0229],
 ];
 
-const casaPropiaDataData: CasaPropiaTypes = {
+const casaPropiaDataData: IRecordResponse = {
   title: "Coeficiente de actualización de los Créditos Casa Propia",
   source: "Ministerio de Economía - Secretaría de Obras Públicas",
-  casaPropiaRecord: casaPropiaRecord,
-  casaPropiaRecordCount: casaPropiaRecord.length,
+  record: casaPropiaRecord,
+  recordCount: casaPropiaRecord.length,
   startDate: casaPropiaRecord[0][0],
   endDate: casaPropiaRecord[casaPropiaRecord.length - 1][0],
 };
