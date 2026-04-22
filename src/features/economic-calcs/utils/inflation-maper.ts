@@ -1,9 +1,10 @@
-import { InflationRecord } from "../../../services/INFLATION/types/inflation-types";
-
 // Builds a Map from the inflation record array for O(1) lookups by month key.
 // Each entry is indexed as "YYYY-MM" so callers can retrieve the monthly
+
+import { RecordType } from "@/src/types/domain-types";
+
 // inflation rate for any given year/month without scanning the full array.
-export const createInflationMap = (inflationRecord: InflationRecord[]) => {
+export const createInflationMap = (inflationRecord: RecordType[]) => {
   const map = new Map<string, number>();
 
   inflationRecord.forEach(([date, value]) => {
