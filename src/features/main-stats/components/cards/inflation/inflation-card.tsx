@@ -31,7 +31,7 @@ export const InflationCard = () => {
           <span className="font-bold">{lastInflation.value} </span>
           {lastInflation.labels.unit}
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">Fecha: {lastInflation.labels.lastDate}</span>
+        <span className="text-xs text-text-secondary  font-extralight">Fecha: {lastInflation.labels.lastDate}</span>
       </div>
     </MainVarStateCard>
   );

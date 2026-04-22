@@ -57,7 +57,7 @@ export const DepositDolarizationCard = () => {
     >
       <div className="flex flex-col items-center">
         <span className="text-xl font-bold">{deposits.toFixed()}%</span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary   font-extralight">
           Fecha: {ARSDeposits?.labels.lastDate}
         </span>
       </div>

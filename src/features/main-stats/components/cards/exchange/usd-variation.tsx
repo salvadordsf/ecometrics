@@ -39,7 +39,7 @@ export const UsdVariationCard = () => {
           <span className="font-bold">{usdVariation.value.toFixed(2)}</span>
           {usdVariation.labels.unit}
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary   font-extralight">
           De {usdVariation.labels.dates.prevDate} a{" "}
           {usdVariation.labels.dates.lastDate}
         </span>

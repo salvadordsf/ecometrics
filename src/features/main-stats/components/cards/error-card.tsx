@@ -13,7 +13,7 @@ export const ErrorVarCard = ({
         : "El servicio de Argentina Datos";
 
   return (
-    <div className="flex flex-col items-center justify-center  gap-1 w-90 p-4 border border-neutral-500 rounded-xl bg-neutral-700/10">
+    <div className="flex flex-col items-center justify-center gap-1 w-90 p-4 border border-neutral-500 rounded-xl bg-neutral-700/10">
       <h3 className="text-md text-center text-neutral-500 font-bold">
         {title}
       </h3>

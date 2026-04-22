@@ -2,6 +2,7 @@ import { UseFormRegisterReturn } from "react-hook-form";
 import { FormErrorMessage } from "./form-error-message";
 import { MonthSelect } from "./month-selector";
 import { YearSelect } from "./year-selector";
+import { InputLabel } from "./input-label";
 
 interface MonthOption {
   value: number;
@@ -28,9 +29,7 @@ export const DateRangeSelector = ({
   selectKey,
 }: DateRangeSelectorProps) => (
   <div className="flex flex-col gap-1.5">
-    <span className="text-[10px] font-medium tracking-[0.12em] uppercase text-gray-500">
-      {label}
-    </span>
+    <InputLabel label={label}/>
 
     <div className="flex gap-2">
       <MonthSelect

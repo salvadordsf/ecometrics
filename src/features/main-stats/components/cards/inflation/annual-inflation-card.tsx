@@ -39,7 +39,7 @@ export const AnnualInflationCard = () => {
           <span className="font-bold">{lastAnualInflation.value} </span>
           {lastAnualInflation.labels.unit}
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary   font-extralight">
           Fecha: {lastAnualInflation.labels.lastDate}
         </span>
       </div>

@@ -47,7 +47,7 @@ export const InflationVarCard = () => {
             porcentuales
           </span>
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary   font-extralight">
           {formatDate(inflationRecords.record[0][0])} a{" "}
           {formatDate(inflationRecords.record[1][0])}
         </span>

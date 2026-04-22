@@ -41,7 +41,7 @@ export const MayoristaGapCard = () => {
         <span className="text-xl">
           <span className="font-bold">{exchangeGap.toFixed(2)}%</span>
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary  font-extralight">
           Fecha: {usdsExchanges.labels.lastDate}
         </span>
       </div>

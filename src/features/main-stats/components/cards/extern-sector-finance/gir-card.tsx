@@ -32,7 +32,7 @@ export const GirCard = () => {
           <span className="font-bold">{lastGIR.value} </span>
           {lastGIR.labels.unit}
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary   font-extralight">
           Fecha: {lastGIR.labels.lastDate}
         </span>
       </div>

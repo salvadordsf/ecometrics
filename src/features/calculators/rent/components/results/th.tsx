@@ -6,7 +6,7 @@ export const Th = ({
   align?: "left" | "right";
 }) => (
   <th
-    className={`px-4 py-2 text-[10px] tracking-[0.1em] uppercase text-gray-500 font-medium text-${align}`}
+    className={`px-4 py-2 text-xs tracking-[0.1em] uppercase text-gray-500 font-medium text-${align}`}
   >
     {children}
   </th>

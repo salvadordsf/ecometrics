@@ -39,8 +39,7 @@ export const RealRateARSCard = () => {
     );
   }, [lastInflation, lastBADLAR, setRealRateStatus]);
 
-  if (isLoadingInflation || isLoadingBADLAR)
-    return <MainVarCardSkeleton />;
+  if (isLoadingInflation || isLoadingBADLAR) return <MainVarCardSkeleton />;
   if (
     isErrorInflation ||
     isErrorBADLAR ||
@@ -48,16 +47,19 @@ export const RealRateARSCard = () => {
     !lastBADLAR ||
     !realRateStatus
   )
-    return <ErrorVarCard title="Tasa real mensual en pesos" api="bcra"/>
+    return <ErrorVarCard title="Tasa real mensual en pesos" api="bcra" />;
   return (
-    <MainVarStateCard stateColor={realRateStatus} title="Tasa real mensual en pesos">
+    <MainVarStateCard
+      stateColor={realRateStatus}
+      title="Tasa real mensual en pesos"
+    >
       <div className="flex flex-col items-center gap-2">
         <span className="text-xl font-bold">{realRate?.toFixed(3)}%</span>
         <div className="flex flex-col items-center">
-          <span className="text-xs text-neutral-400  font-extralight">
+          <span className="text-xs text-text-secondary   font-extralight">
             BADLAR mensualizada − inflación mensual
           </span>
-          <span className="text-xs text-neutral-400  font-extralight">
+          <span className="text-xs text-text-secondary   font-extralight">
             Fecha: {lastBADLAR.labels.lastDate}
           </span>
         </div>

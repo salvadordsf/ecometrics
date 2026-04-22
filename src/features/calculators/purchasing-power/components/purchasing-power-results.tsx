@@ -1,4 +1,5 @@
 import { ResultsDivider } from "@/src/components/ui/results/result-divider";
+import { ResultLabel } from "@/src/components/ui/results/result-label";
 import { PurchasingPowerResultType } from "@/src/features/economic-calcs/purchasing-power";
 import { formatAmount } from "@/src/utils/format-amount";
 import { formatPercent } from "@/src/utils/format-porcent";
@@ -58,7 +59,7 @@ export const PurchasingPowerResult = (result: PurchasingPowerResultType) => {
           className={`absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent ${accent.via} to-transparent`}
         />
         <p
-          className={`text-[10px] tracking-[0.16em] uppercase ${accent.label} mb-1`}
+          className={`text-xs tracking-[0.16em] uppercase ${accent.label} mb-1`}
         >
           {isGain
             ? "ganancia de poder adquisitivo"
@@ -73,27 +74,27 @@ export const PurchasingPowerResult = (result: PurchasingPowerResultType) => {
         </p>
         {/* Full percentage shown only when the value was abbreviated */}
         {shortVar !== fullVar && (
-          <p className={`text-[11px] ${accent.sub} mt-0.5`}>
+          <p className={`text-xs ${accent.sub} mt-0.5`}>
             {sign}
             {fullVar}
           </p>
         )}
         {/* Period summary: month count and date range */}
-        <p className="text-[11px] text-gray-500 mt-1.5">
+        <p className="text-xs text-text-secondary mt-1.5">
           {period.monthsCount} meses · {formatDate(period.start.date)} →{" "}
           {formatDate(period.end.date)}
         </p>
       </div>
 
       {/* Period inflation: the overall CPI increase over the selected period */}
-      <div className="rounded-md border border-amber-600/20 bg-amber-600/5 px-4 py-3 flex items-center justify-between gap-4">
-        <p className="text-[10px] tracking-[0.12em] uppercase text-amber-600/70 shrink-0">
+      <div className="rounded-md border border-amber/20 bg-amber/5 px-4 py-3 flex items-center justify-between gap-4">
+        <p className="text-xs tracking-[0.12em] uppercase text-amber/70 shrink-0">
           inflación del período
         </p>
         <div className="text-right">
-          <p className="text-[13px] font-medium text-amber-400">+{shortInfl}</p>
+          <p className="text-sm font-medium text-amber-400">+{shortInfl}</p>
           {shortInfl !== fullInfl && (
-            <p className="text-[10px] text-amber-600/40">+{fullInfl}</p>
+            <p className="text-xs text-amber/40">+{fullInfl}</p>
           )}
         </div>
       </div>
@@ -108,17 +109,15 @@ export const PurchasingPowerResult = (result: PurchasingPowerResultType) => {
           return (
             <div
               key={label}
-              className="rounded-md border border-gray-800 bg-gray-900 p-4 flex flex-col gap-1"
+              className="rounded-md border border-border bg-surface-2 p-4 flex flex-col gap-1"
             >
-              <p className="text-[10px] tracking-[0.12em] uppercase text-gray-500">
-                {label}
-              </p>
-              <p className="text-lg font-medium text-gray-300 leading-tight">
+              <ResultLabel label={label} />
+              <p className="text-lg font-medium text-text-primary leading-tight">
                 {short}
               </p>
               {/* Full value shown below when abbreviated */}
               {short !== full && (
-                <p className="text-[10px] text-gray-600">{full}</p>
+                <p className="text-xs text-text-muted">{full}</p>
               )}
             </div>
           );
@@ -126,35 +125,31 @@ export const PurchasingPowerResult = (result: PurchasingPowerResultType) => {
       </div>
 
       {/* Inflation-adjusted value: what the start amount is equivalent to in end-period money */}
-      <div className="rounded-md border border-gray-800 bg-gray-900 p-4 flex items-center justify-between gap-4">
-        <p className="text-[10px] tracking-[0.12em] uppercase text-gray-500 shrink-0">
-          valor ajustado
-        </p>
+      <div className="rounded-md border border-gray-800 bg-surface-2 p-4 flex items-center justify-between gap-4">
+        <ResultLabel label="valor ajustado" />
         <div className="text-right">
-          <p className="text-[15px] font-semibold text-gray-50">
+          <p className="text-lg font-semibold text-text-primary">
             {shortInflAmount}
           </p>
           {shortInflAmount !== fullInflAmount && (
-            <p className="text-[10px] text-gray-600">{fullInflAmount}</p>
+            <p className="text-xs text-text-muted">{fullInflAmount}</p>
           )}
         </div>
       </div>
 
       {/* Nominal difference: absolute gap between the end amount and the inflation-adjusted start amount */}
       <div className="rounded-md border border-gray-800 bg-gray-900 p-4 flex items-center justify-between gap-4">
-        <p className="text-[10px] tracking-[0.12em] uppercase text-gray-500 shrink-0">
-          diferencia nominal
-        </p>
+        <ResultLabel label="diferencia nominal" />
         <div className="text-right">
           {/* Color reflects gain or loss */}
           <p
-            className={`text-[15px] font-semibold ${isGain ? "text-green-400" : "text-red-400"}`}
+            className={`text-lg font-semibold ${isGain ? "text-green-400" : "text-red-400"}`}
           >
             {sign}
             {shortDiff}
           </p>
           {shortDiff !== fullDiff && (
-            <p className="text-[10px] text-gray-600">
+            <p className="text-xs text-text-muted">
               {sign}
               {fullDiff}
             </p>

@@ -32,13 +32,13 @@ export default function CalculadorasPage() {
     <main className="max-w-5xl mx-auto px-8 py-16 flex flex-col gap-12">
       {/* Page header */}
       <div className="flex flex-col gap-2">
-        <span className="text-[10px] tracking-[0.2em] uppercase text-amber-600/70">
+        <span className="text-xs tracking-[0.2em] uppercase text-amber-600/70">
           herramientas
         </span>
         <h1 className="text-2xl font-semibold text-gray-50 tracking-tight">
           Calculadoras
         </h1>
-        <p className="text-[13px] text-gray-500 leading-relaxed max-w-md">
+        <p className="text-sm text-text-secondary leading-relaxed max-w-md">
           Explora todas las calculadoras económicas.
         </p>
       </div>
@@ -51,30 +51,30 @@ export default function CalculadorasPage() {
           <Link
             key={calc.slug}
             href={`/calculadoras/${calc.slug}`}
-            className="group relative flex flex-col gap-4 rounded-md border border-gray-800 bg-gray-900 p-5 hover:border-gray-700 hover:bg-gray-800/60 transition-all duration-150"
+            className="group relative flex flex-col gap-4 rounded-md border border-border bg-surface-2/80 p-5 hover:border-border-2 hover:bg-surface-2 transition-all duration-150"
           >
 
             {/* Header */}
             <div className="flex items-start justify-between gap-3">
-              <p className="text-[13px] font-semibold text-gray-100 group-hover:text-white transition-colors">
+              <p className="text-lg font-semibold text-text-primary/90 group-hover:text-text-primary transition-colors">
                 {calc.nombre}
               </p>
-              <span className="text-gray-700 group-hover:text-amber-600 transition-colors duration-150 shrink-0 mt-0.5">
+              <span className="text-text-muted group-hover:text-amber transition-colors duration-150 shrink-0 mt-0.5">
                 ↗
               </span>
             </div>
 
             {/* Descripción */}
-            <p className="text-[12px] text-gray-500 leading-relaxed group-hover:text-gray-400 transition-colors duration-150 flex-1">
+            <p className="text-sm text-text-secondary/80 leading-relaxed group-hover:text-text-secondary transition-colors duration-150 flex-1">
               {calc.descripcion}
             </p>
 
             {/* Índices */}
-            <div className="flex flex-wrap gap-1.5 pt-1 border-t border-gray-800/60">
+            <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/60">
               {calc.indices.map((idx) => (
                 <span
                   key={idx}
-                  className="text-[9px] tracking-[0.1em] uppercase px-2 py-1 rounded bg-amber-600/10 text-amber-600/70 border border-amber-600/20"
+                  className="text-xs tracking-[0.1em] uppercase px-2 py-1 rounded bg-amber/10 text-amber/70 border border-amber/20"
                 >
                   {idx}
                 </span>

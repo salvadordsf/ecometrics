@@ -116,7 +116,7 @@ export default function MainEconomicsStats() {
         />
       </main>
 
-      <section className="flex flex-col gap-5 divide-neutral-800 divide-y mt-10">
+      <section className="flex flex-col gap-5 divide-surface-2 divide-y mt-10">
         {VAR_LABEL &&
           VAR_LABEL.map((economicVar) => (
             <VarDescription

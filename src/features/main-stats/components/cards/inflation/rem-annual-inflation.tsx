@@ -41,7 +41,7 @@ export const REMAnnualInflation = () => {
           <span className="font-bold">{lastREMAnnualInflation.value} </span>
           {lastREMAnnualInflation.labels.unit}
         </span>
-        <span className="text-xs text-neutral-400  font-extralight">
+        <span className="text-xs text-text-secondary   font-extralight">
           Fecha: {lastREMAnnualInflation.labels.lastDate}
         </span>
       </div>
