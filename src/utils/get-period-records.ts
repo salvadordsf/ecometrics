@@ -1,10 +1,10 @@
-import { AnyRecord } from "../types/any-record";
+import { RecordType } from "../types/domain-types";
 
 export const getPeriodRecord = (
-  record: AnyRecord[],
+  record: RecordType[],
   startYear: number,
   startMonth: number,
-): AnyRecord[] => {
+): RecordType[] => {
   const startDateStr = `${startYear}-${String(startMonth).padStart(2, "0")}`;
 
   // Find the first record whose date is >= startDateStr
