@@ -8,6 +8,7 @@ import {
   useARSDeposits,
   useMEDeposits,
 } from "@/src/services/DEPOSITS/services/deposits-querys";
+import { ErrorVarCard } from "../error-card";
 
 export const DepositDolarizationCard = () => {
   // Fetch ARS deposits record
@@ -48,7 +49,7 @@ export const DepositDolarizationCard = () => {
   if (isLoadingARSDeposits || isLoadingMEDeposits)
     return <MainVarCardSkeleton />;
   if (isErrorARSDeposits || isErrorMEDeposits || !depositsStatus || !deposits)
-    return <p>Error al cargar depositos</p>;
+    return <ErrorVarCard title="Dolarización de depósitos del sector privado" api="bcra"/>
   return (
     <MainVarStateCard
       stateColor={depositsStatus}

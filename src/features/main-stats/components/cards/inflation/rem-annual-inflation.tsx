@@ -4,6 +4,7 @@ import { MainVarStateCard } from "../main-var-state-card";
 import { useEffect, useState } from "react";
 import { MainVarCardSkeleton } from "../../main-var-card-skeleton";
 import { useLastREMInflation } from "@/src/services/INFLATION/services/inflation-query";
+import { ErrorVarCard } from "../error-card";
 
 export const REMAnnualInflation = () => {
   // Fetch last REM Annual Inflation record
@@ -29,7 +30,7 @@ export const REMAnnualInflation = () => {
 
   if (isLoading) return <MainVarCardSkeleton />;
   if (isError || !lastREMAnnualInflation || !inflationStatus)
-    return <p>Error al cargar inflacion interanual</p>;
+    return <ErrorVarCard title="Expectativas de inflación a 12 meses (REM)" api="bcra"/>
   return (
     <MainVarStateCard
       stateColor={inflationStatus}
