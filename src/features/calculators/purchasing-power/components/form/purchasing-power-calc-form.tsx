@@ -29,7 +29,7 @@ export const PurchasingPowerForm = () => {
   );
 
   // Fetch monthly inflation records from the BCRA API
-  const { data: Inflation_data, isLoading, isError } = useInflation();
+  const { data: inflation, isLoading, isError } = useInflation();
 
   const {
     register,
@@ -47,11 +47,11 @@ export const PurchasingPowerForm = () => {
 
   // Extract the min/max year and month boundaries from the dataset
   const { startYearMin, startMonthMin, endYearMax, endMonthMax } =
-    getDataBounds(Inflation_data);
+    getDataBounds(inflation);
 
   // Both start and end share the same full year range
-  const startYearOptions = useYearOptions(Inflation_data);
-  const endYearOptions = useYearOptions(Inflation_data);
+  const startYearOptions = useYearOptions(inflation);
+  const endYearOptions = useYearOptions(inflation);
 
   // Month options are filtered based on the selected year and the dataset boundaries
   const startMonthOptions = useMonthOptions(
@@ -72,10 +72,10 @@ export const PurchasingPowerForm = () => {
   // Once the inflation data is available, initialize the form with the full available range
   // startAmount and endAmount default to the same value so the user can compare from a baseline
   useEffect(() => {
-    if (!Inflation_data) return;
+    if (!inflation) return;
 
-    const start = new Date(Inflation_data.startDate);
-    const end = new Date(Inflation_data.endDate);
+    const start = new Date(inflation.startDate);
+    const end = new Date(inflation.endDate);
 
     reset({
       startYear: start.getFullYear(),
@@ -85,14 +85,14 @@ export const PurchasingPowerForm = () => {
       startAmount: 100000,
       endAmount: 100000,
     });
-  }, [Inflation_data, reset]);
+  }, [inflation, reset]);
 
   // Run the purchasing power calculation and store the result for display
   const onSubmit = (data: PurchasingPowerFormType) => {
-    if (Inflation_data) {
+    if (inflation) {
       const result = calculatePurchasingPower(
         data,
-        Inflation_data.inflationRecord,
+        inflation.record,
       );
       setResults(result);
     }
@@ -104,7 +104,7 @@ export const PurchasingPowerForm = () => {
   }
 
   // Show error state if the fetch failed or returned no data
-  if (!Inflation_data || isError) {
+  if (!inflation || isError) {
     return (
       <div className="text-center py-10">Error al intentar obtener datos</div>
     );
