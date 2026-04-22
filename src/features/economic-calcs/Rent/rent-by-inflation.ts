@@ -1,10 +1,10 @@
-import { AnyRecord } from "@/src/types/any-record";
+import { RecordType } from "@/src/types/domain-types";
 import { RentFormType } from "../../calculators/rent/schemas/rent-form-schema";
 import { getNextMonth } from "@/src/utils/get-next-month";
 
 // Extends the form data with the filtered inflation records for the selected period
 interface RentByInflationParams extends RentFormType {
-  records: AnyRecord[];
+  records: RecordType[];
 }
 
 // Represents a single month entry in the rent calculation result
