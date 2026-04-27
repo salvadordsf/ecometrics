@@ -17,10 +17,10 @@ const SECTIONS = [
     size: "small",
   },
   {
-    label: "Deuda",
-    description: "Stock de deuda pública y perfil de vencimientos.",
-    href: "#",
-    badge: "Próximamente",
+    label: "Deuda Privada",
+    description: "Deuda privada, tipos y composición.",
+    href: "/deuda-privada",
+    badge: null,
     size: "small",
   },
   {

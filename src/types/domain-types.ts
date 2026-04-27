@@ -94,3 +94,20 @@ export interface IGetUSDVariation {
     };
   };
 }
+
+// Interface for the returned object for the last Debts
+export interface ILastPrivateDebts {
+  title: string;
+  source: string;
+  lastDate: string;
+  values: {
+    labels: {
+      debtType: string;
+      lastDate: string;
+    };
+    lastDate: string;
+    periodicity: string;
+    debtType: string;
+    value: number;
+  }[];
+}
