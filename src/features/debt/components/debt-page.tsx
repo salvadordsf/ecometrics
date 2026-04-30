@@ -9,7 +9,7 @@ import { DebtUsdLineChart } from "./chart/usd-debt/line/debt-line-chart";
 
 export const PrivateDebtPage = () => {
   return (
-    <section className="flex flex-col items-center gap-10 mt-10 mx-auto">
+    <section className="flex flex-col items-center gap-20 mt-10 mx-auto">
       <header className="flex flex-col items-center">
         <Title title="Deuda privada" label="Total y composicón" />
         <p className="text-center text-md text-text-secondary p-2">
@@ -19,15 +19,15 @@ export const PrivateDebtPage = () => {
           económica, el acceso al crédito y la exposición del sistema
           financiero.
         </p>
+        <div className="flex flex-col items-center px-2 mt-5">
+          <TotalPrivateDebt />
+        </div>
       </header>
-      <main className="flex flex-col items-center px-2">
-        <TotalPrivateDebt />
-      </main>
-      <section className="w-full">
+      <main className="w-full">
         <Subtitle subtitle="Deuda privada en moneda local" />
         <TotalPrivateDebtPieChart />
         <DebtLineChart />
-      </section>
+      </main>
       <section className="w-full">
         <Subtitle subtitle="Deuda privada en moneda extranjera" />
         <TotalPrivateUsdDebtPieChart />

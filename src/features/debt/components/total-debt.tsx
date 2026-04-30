@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader } from "@/src/components/ui/loader";
 import { useLastPrivateDebt } from "@/src/services/DEBT/services/debt-querys";
 import { useMemo } from "react";
 
@@ -30,7 +31,7 @@ export const TotalPrivateDebt = () => {
     [lastPrivateDebts],
   );
 
-  if (isLoading) return <p>Cargando</p>;
+  if (isLoading) return <Loader />;
   if (isError || !lastPrivateDebts || !totalDebt) return <p>Error al cargar debt</p>;
 
   return (
