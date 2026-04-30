@@ -111,3 +111,21 @@ export interface ILastPrivateDebts {
     value: number;
   }[];
 }
+
+// Interface for the returned object for the historic Debts
+export interface IPrivateDebts {
+  title: string;
+  source: string;
+  lastDate: string;
+  values: {
+    labels: {
+      debtType: string;
+      lastDate: string;
+      unit: String;
+    };
+    lastDate: string;
+    periodicity: string;
+    debtType: string;
+    records: RecordType[]; // [date, value][]
+  }[];
+}
