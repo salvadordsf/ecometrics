@@ -13,8 +13,8 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
-import { InflationChartLinesSelector } from "./lines-selector";
 import { RenderLegendFormatter } from "@/src/components/ui/chart/leged-formatter";
+import { ChartLinesSelector } from "@/src/components/ui/chart/chart-lines-selector";
 
 export const InflationChart = ({
   records,
@@ -39,7 +39,7 @@ export const InflationChart = ({
           en relación a tipos de cambios de USD.
         </p>
         {/* USDs selector */}
-        <InflationChartLinesSelector
+        <ChartLinesSelector
           inputs={[
             { label: "Dolar oficial", setState: setUsdOficial },
             { label: "Dolar CCL", setState: setUsdCLL },
