@@ -12,10 +12,10 @@ export const InflationPage = () => {
           el tipo de cambio y las reservas.
         </p>
       </header>
-      <main className="flex flex-col max-w-3xl">
+      <main className="flex flex-col">
         <InflationMainCards />
       </main>
-      <section className="max-w-3xl w-full">
+      <section className="w-full">
         <InflationChartContainer />
       </section>
     </section>

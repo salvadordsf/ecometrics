@@ -29,7 +29,7 @@ const calculadoras = [
 
 export default function CalculadorasPage() {
   return (
-    <main className="max-w-5xl mx-auto px-8 py-16 flex flex-col gap-12">
+    <main className="mx-auto py-16 flex flex-col gap-12">
       {/* Page header */}
       <div className="flex flex-col gap-2">
         <span className="text-xs tracking-[0.2em] uppercase text-amber-600/70">

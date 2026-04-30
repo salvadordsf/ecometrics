@@ -1,6 +1,6 @@
 export default function AutorPage() {
   return (
-    <main className="max-w-md mx-auto px-4 py-16 flex flex-col gap-8">
+    <main className="mx-auto px-4 py-16 flex flex-col gap-8">
       <div className="flex flex-col gap-2">
         <span className="text-xs tracking-[0.2em] uppercase text-amber">
           autor
@@ -23,7 +23,7 @@ export default function AutorPage() {
 
       <div className="h-px bg-gradient-to-r from-transparent via-border to-transparent" />
 
-      <div className="flex flex-col gap-2">
+      <div className="flex flex-col gap-2 max-w-md">
         {[
           { label: "Portfolio", href: "https://salvadordisabatto.com.ar" },
           { label: "GitHub", href: "https://github.com/salvadordsf" },
@@ -38,7 +38,7 @@ export default function AutorPage() {
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center justify-between px-4 py-3 rounded-md border border-border bg-surface text-sm text-text-secondary hover:text-text-primary hover:border-border-2 transition-all duration-150 group"
+            className="flex items-center justify-between px-4 py-3 rounded-md border border-border bg-surface-2 text-sm text-text-secondary hover:text-text-primary hover:border-border-2 transition-all duration-150 group"
           >
             <span className="tracking-[0.08em] uppercase">
               {label}{" "}

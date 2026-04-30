@@ -55,9 +55,9 @@ const CALCULADORAS = [
 
 export default function Home() {
   return (
-    <main className="relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center px-6 py-16">
+    <main className="relative min-h-[calc(100vh-56px)] flex flex-col items-center justify-center py-16">
 
-      <div className="relative flex flex-col items-center gap-10 w-full max-w-xl">
+      <div className="relative flex flex-col items-center gap-10 w-full">
         {/* Eyebrow */}
         <span className="text-xs tracking-[0.3em] uppercase text-amber">
           código abierto · argentina
