@@ -1,4 +1,4 @@
-import { VarDescription } from "../../main-stats/components/var-description";
+import { VarDescription } from "../../../components/ui/var-description";
 
 export const DEBT_TYPES_DESC = [
   {

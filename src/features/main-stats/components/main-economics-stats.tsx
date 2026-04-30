@@ -1,6 +1,6 @@
 import { Title } from "@/src/components/ui/title";
 import { StatusLabel } from "./status-label";
-import { VarDescription } from "./var-description";
+import { VarDescription } from "../../../components/ui/var-description";
 import { CardsSection } from "./cards/cards-section";
 import { GirCard } from "./cards/extern-sector-finance/gir-card";
 import { InflationCard } from "./cards/inflation/inflation-card";
