@@ -19,6 +19,6 @@ export const RenderLegendFormatter = (value: string, entry: any): ReactElement =
       label = "Dolar blue";
       break;
   }
-
+  console.log(color)
   return <span style={{ color }}>{label}</span>;
 };

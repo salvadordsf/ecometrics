@@ -64,8 +64,8 @@ export const InflationChartContainer = () => {
 
   }, [inflation, usdOficial, usdCCL, usdBlue]);
 
-  if (isLoading || isLoadingUSDOficial || isLoadingUSDCCL) return <div></div>;
-  if (isError)
+  if (isLoading || isLoadingUSDOficial || isLoadingUSDCCL || isLoadingUSDBlue) return <div></div>;
+  if (isError || isErrorUSDOficial || isErrorUSDCCL || isErrorUSDBlue)
     return <ErrorVarCard title="Gráfico inflacionario" api="bcra"/>;
 
   return <InflationChart records={records} startDate={START_DATE_CHART}/>;

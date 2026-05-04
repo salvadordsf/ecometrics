@@ -15,6 +15,9 @@ import {
 } from "recharts";
 import { RenderLegendFormatter } from "@/src/components/ui/chart/leged-formatter";
 import { ChartLinesSelector } from "@/src/components/ui/chart/chart-lines-selector";
+import { INFLATION_TYPE_LABEL } from "../../utils/inflation-type-labels";
+import { INFLATION_TYPE_COLOR } from "../../utils/inflation-type-color";
+import { inflationTooltipFormatter } from "./inflation-tooltip-formatter";
 
 export const InflationChart = ({
   records,
@@ -31,9 +34,7 @@ export const InflationChart = ({
   return (
     <section>
       <header className="flex flex-col items-center">
-        <Subtitle
-          subtitle={`Gráfico inflaciónario`}
-        />
+        <Subtitle subtitle={`Gráfico inflaciónario`} />
         <p className="text-center text-md text-text-secondary p-2">
           Evolución de la inflación desde {formatDate(startDate)} al día de hoy,
           en relación a tipos de cambios de USD.
@@ -41,9 +42,21 @@ export const InflationChart = ({
         {/* USDs selector */}
         <ChartLinesSelector
           inputs={[
-            { label: "Dolar oficial", setState: setUsdOficial },
-            { label: "Dolar CCL", setState: setUsdCLL },
-            { label: "Dolar blue", setState: setUsdBlue },
+            {
+              label: INFLATION_TYPE_LABEL.usdOficial,
+              setState: setUsdOficial,
+              color: INFLATION_TYPE_COLOR.usdOficial,
+            },
+            {
+              label: INFLATION_TYPE_LABEL.usdCCL,
+              setState: setUsdCLL,
+              color: INFLATION_TYPE_COLOR.usdCCL,
+            },
+            {
+              label: INFLATION_TYPE_LABEL.usdBlue,
+              setState: setUsdBlue,
+              color: INFLATION_TYPE_COLOR.usdBlue,
+            },
           ]}
         />
       </header>
@@ -65,7 +78,7 @@ export const InflationChart = ({
             type="monotone"
             dataKey="inflation"
             strokeWidth={3}
-            stroke="oklch(66.6% 0.179 58.318)"
+            stroke={INFLATION_TYPE_COLOR.inflation}
             dot={false}
             isAnimationActive={false}
           />
@@ -76,7 +89,7 @@ export const InflationChart = ({
               type="monotone"
               dataKey="usdOficial"
               strokeWidth={2}
-              stroke="oklch(72.3% 0.219 149.579)"
+              stroke={INFLATION_TYPE_COLOR.usdOficial}
               dot={false}
               isAnimationActive={false}
             />
@@ -86,7 +99,7 @@ export const InflationChart = ({
               type="monotone"
               dataKey="usdCCL"
               strokeWidth={2}
-              stroke="oklch(49.6% 0.265 301.924)"
+              stroke={INFLATION_TYPE_COLOR.usdCCL}
               dot={false}
               isAnimationActive={false}
             />
@@ -94,10 +107,9 @@ export const InflationChart = ({
           {usdBlue && (
             <Line
               type="monotone"
-              
               dataKey="usdBlue"
               strokeWidth={2}
-              stroke="oklch(62.3% 0.214 259.815)"
+              stroke={INFLATION_TYPE_COLOR.usdBlue}
               dot={false}
               isAnimationActive={false}
             />
@@ -110,20 +122,13 @@ export const InflationChart = ({
             }}
             labelStyle={{ color: "rgba(255,255,255,0.5)" }}
             itemStyle={{ color: "rgba(255,255,255,0.9)" }}
-            formatter={(value, name) => {
-              switch (name) {
-                case "inflation":
-                  return [`${value}%`, `Inflación`];
-                case "usdOficial":
-                  return [`${value}%`, `Var. USD oficial`];
-                case "usdCCL":
-                  return [`${value}%`, `Var. USD CCL`];
-                case "usdBlue":
-                  return [`${value}%`, `Var. USD Blue`];
-              }
-            }}
+            formatter={(value, name) => inflationTooltipFormatter(value, name)}
           />
-          <Legend verticalAlign="bottom" height={36} formatter={RenderLegendFormatter}/>
+          <Legend
+            verticalAlign="bottom"
+            height={36}
+            formatter={RenderLegendFormatter}
+          />
         </LineChart>
       </ResponsiveContainer>
     </section>
