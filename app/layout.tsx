@@ -32,10 +32,12 @@ export default function RootLayout({
       lang="es"
       className={`${instrumentSerif.variable} ${dmMono.variable} h-full antialiased dark`}
     >
-      <body className="min-h-full max-w-4xl flex flex-col items-center text-gray-50 font-mono mx-auto px-8">
+      <body className="min-h-full flex flex-col items-center text-gray-50 font-mono mx-auto">
         <GlobalProvider>
           <Header />
-          {children}
+          <div className="max-w-4xl px-8">
+            {children}
+          </div>
         </GlobalProvider>
       </body>
     </html>
