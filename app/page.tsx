@@ -13,22 +13,23 @@ const SECTIONS = [
     label: "Inflación",
     description: "Evolución histórica del IPC y expectativas del mercado.",
     href: "/inflacion",
-    badge: null,
+    badge: "Nuevo gráfico",
     size: "small",
   },
   {
     label: "Deuda Privada",
     description: "Deuda privada, tipos y composición.",
     href: "/deuda-privada",
-    badge: null,
+    badge: "Nueva sección",
     size: "small",
+
   },
   {
     label: "Tipo de cambio",
     description: "Dólar oficial, MEP, CCL y brecha histórica.",
     href: "#",
     badge: "Próximamente",
-    size: "small",
+    size: "large",
   },
 ];
 
@@ -74,9 +75,9 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="w-[60%] h-px bg-gradient-to-r from-transparent via-amber/40 to-transparent" />
+        <div className="w-[60%] h-px bg-linear-to-r from-transparent via-amber/40 to-transparent" />
 
-        {/* Mosaico análisis */}
+        {/* Mosaic */}
         <div className="w-full flex flex-col gap-2">
           <span className="text-xs tracking-[0.25em] uppercase text-text-secondary mb-1">
             Análisis macroeconómico

@@ -126,7 +126,7 @@ export const getInflation = async (limit = 3000): Promise<IRecordResponse> => {
 
     return finalRes;
   } catch (error) {
-    console.error(error);
+    
     throw new Error(
       "Error al obtener Variación mensual del índice de precios al consumidor del BCRA. Intente más tarde.",
     );
@@ -355,7 +355,7 @@ export const getInflationByCategories =
 
       return finalRes;
     } catch (error) {
-      console.error(error);
+      
       throw new Error(
         `Error al obtener los IPC por categoría de INDEC. Intente más tarde.`,
       );

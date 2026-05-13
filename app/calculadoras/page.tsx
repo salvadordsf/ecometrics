@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-const calculadoras = [
+const calcs = [
   {
     slug: "inflacion",
     nombre: "Inflación acumulada",
@@ -27,7 +27,7 @@ const calculadoras = [
   },
 ];
 
-export default function CalculadorasPage() {
+export default function CalculatorsPage() {
   return (
     <main className="mx-auto py-16 flex flex-col gap-12">
       {/* Page header */}
@@ -43,11 +43,11 @@ export default function CalculadorasPage() {
         </p>
       </div>
 
-      <div className="h-px bg-gradient-to-r from-transparent via-gray-800 to-transparent" />
+      <div className="h-px bg-linear-to-r from-transparent via-gray-800 to-transparent" />
 
       {/* Cards grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-        {calculadoras.map((calc) => (
+        {calcs.map((calc) => (
           <Link
             key={calc.slug}
             href={`/calculadoras/${calc.slug}`}
@@ -64,17 +64,17 @@ export default function CalculadorasPage() {
               </span>
             </div>
 
-            {/* Descripción */}
+            {/* Description */}
             <p className="text-sm text-text-secondary/80 leading-relaxed group-hover:text-text-secondary transition-colors duration-150 flex-1">
               {calc.descripcion}
             </p>
 
-            {/* Índices */}
+            {/* Index */}
             <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border/60">
               {calc.indices.map((idx) => (
                 <span
                   key={idx}
-                  className="text-xs tracking-[0.1em] uppercase px-2 py-1 rounded bg-amber/10 text-amber/70 border border-amber/20"
+                  className="text-xs tracking-widest uppercase px-2 py-1 rounded bg-amber/10 text-amber/70 border border-amber/20"
                 >
                   {idx}
                 </span>

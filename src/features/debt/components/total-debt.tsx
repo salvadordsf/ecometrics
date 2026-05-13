@@ -1,8 +1,8 @@
 "use client";
 
-import { Loader } from "@/src/components/ui/loader";
 import { useLastPrivateDebt } from "@/src/services/DEBT/services/debt-querys";
 import { useMemo } from "react";
+import { TotalPrivateDebtSkeleton } from "./skeletons/total-debt-skeleton";
 
 export const TotalPrivateDebt = () => {
   const { data: lastPrivateDebts, isLoading, isError } = useLastPrivateDebt();
@@ -31,7 +31,7 @@ export const TotalPrivateDebt = () => {
     [lastPrivateDebts],
   );
 
-  if (isLoading) return <Loader />;
+  if (isLoading) return <TotalPrivateDebtSkeleton />;
   if (isError || !lastPrivateDebts || !totalDebt) return <p>Error al cargar debt</p>;
 
   return (

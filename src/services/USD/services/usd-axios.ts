@@ -89,7 +89,7 @@ export const getLastUSDExchange = async (): Promise<IUSDSExchangeReturn> => {
 
     return finalRes;
   } catch (error) {
-    console.error(error);
+    
     throw new Error(
       "Error al obtener Cotizaciones de USDs de DolarAPI. Intente más tarde.",
     );
@@ -136,7 +136,7 @@ export const getUSDCasaExchange = async (
 
     return finalRes;
   } catch (error) {
-    console.error(error);
+    
     throw new Error(
       `Error al obtener la Cotización de USD ${casa === "contadoconliqui" ? "CCL" : casa} de ArgentinaDatosAPI. Intente más tarde.`,
     );
@@ -179,7 +179,7 @@ export const getUSDCasaVariationExchange = async (
 
     return finalRes;
   } catch (error) {
-    console.error(error);
+    
     throw new Error(
       `Error al obtener la Variación de la Cotización de USD ${casa === "contadoconliqui" ? "CCL" : casa} de ArgentinaDatosAPI. Intente más tarde.`,
     );
