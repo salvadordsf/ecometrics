@@ -35,7 +35,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col items-center text-gray-50 font-mono mx-auto">
         <GlobalProvider>
           <Header />
-          <div className="max-w-4xl px-8">
+          <div className="w-full max-w-4xl px-8">
             {children}
           </div>
         </GlobalProvider>
