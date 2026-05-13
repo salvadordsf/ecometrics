@@ -137,7 +137,7 @@ export const DebtLineChart = () => {
   return (
     <section>
       <header className="flex flex-col items-center">
-        <p className="text-center text-md text-text-secondary p-2 mb-5">
+        <p className="text-md text-text-secondary p-2 mb-5">
           <span className="underline underline-offset-2">Gráfico 2:</span> Total
           de préstamos en moneda local otorgados al sector privado, expresado en
           miles de millones de pesos ARS. No incluye operaciones en moneda

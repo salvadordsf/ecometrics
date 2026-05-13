@@ -25,7 +25,7 @@ export const DebtUsdLineChart = () => {
   // Calc the usd debt values
   const usdChartData = useMemo(() => {
     if (debt) {
-      console.log(debt);
+      
       const values = debt.values;
 
       return values[0].records.map((rec, i) => {
@@ -71,7 +71,7 @@ export const DebtUsdLineChart = () => {
   return (
     <section>
       <header className="flex flex-col items-center">
-        <p className="text-center text-md text-text-secondary p-2 mb-5">
+        <p className="text-md text-text-secondary p-2 mb-5">
           <span className="underline underline-offset-2">Gráfico 2:</span> Total
           de préstamos en moneda extranjera otorgados al sector privado,
           expresado en millones de dolares. No incluye operaciones en moneda

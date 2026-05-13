@@ -1,3 +1,4 @@
+import { INFLATION_TYPE_LABEL } from "@/src/features/inflation-page/utils/inflation-type-labels";
 import { ReactElement } from "react";
 
 export const RenderLegendFormatter = (value: string, entry: any): ReactElement => {
@@ -7,18 +8,18 @@ export const RenderLegendFormatter = (value: string, entry: any): ReactElement =
 
   switch (value) {
     case "inflation":
-      label = "Inflación";
+      label = INFLATION_TYPE_LABEL.inflation;
       break;
     case "usdOficial":
-      label = "Dolar oficial";
+      label = INFLATION_TYPE_LABEL.usdOficial;
       break;
     case "usdCCL":
-      label = "Dolar CLL";
+      label = INFLATION_TYPE_LABEL.usdCCL;
       break;
     case "usdBlue":
-      label = "Dolar blue";
+      label = INFLATION_TYPE_LABEL.usdBlue;
       break;
   }
-  console.log(color)
+  
   return <span style={{ color }}>{label}</span>;
 };

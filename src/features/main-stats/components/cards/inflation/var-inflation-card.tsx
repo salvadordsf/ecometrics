@@ -17,12 +17,12 @@ export const InflationVarCard = () => {
 
   // Set the status (red | yellow | green)
   useEffect(() => {
-    if (inflationRecords) console.log(inflationRecords);
+    if (!inflationRecords) return;
     const inflationVar = inflationRecords
       ? inflationRecords.record[1][1] - inflationRecords.record[0][1]
       : null;
     if (inflationVar && inflationVar !== null) {
-      console.log("asdasd");
+      
       setinflationVar(inflationVar);
       setinflationVarStatus(
         inflationVar! > 1 ? "red" : inflationVar > 0.2 ? "yellow" : "green",

@@ -4,7 +4,6 @@ import { useLastPrivateDebt } from "@/src/services/DEBT/services/debt-querys";
 import { useMemo } from "react";
 import { Pie, PieChart } from "recharts";
 import { DEBT_TYPE_COLOR } from "../../../../util/debt-type-color";
-import { Subtitle } from "@/src/components/ui/subtitle";
 import { DEBT_TYPE_USD_LABEL } from "../../../../util/debt-type-label";
 import { Loader } from "@/src/components/ui/loader";
 
@@ -58,9 +57,9 @@ export const TotalPrivateUsdDebtPieChart = () => {
     return <p>Error al cargar debt</p>;
 
   return (
-    <section className="p-4 mb-10">
+    <section className=" mb-10">
       <header className="mb-5">
-        <p className="text-center text-md text-text-secondary p-2">
+        <p className="text-md text-text-secondary p-2">
           <span className="underline underline-offset-2">Gráfico 1:</span> Composición porcentual del total de préstamos en moneda extranjera otorgados al sector privado. No incluye operaciones en
           moneda local.
         </p>

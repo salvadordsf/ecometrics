@@ -48,9 +48,9 @@ export const TotalPrivateDebtPieChart = () => {
     return <p>Error al cargar debt</p>;
 
   return (
-    <section className="p-4 py-0 mb-10">
+    <section className="py-0 mb-10">
       <header className="mb-5">
-        <p className="text-center text-md text-text-secondary p-2">
+        <p className="text-md text-text-secondary p-2">
           <span className="underline underline-offset-2">Gráfico 1:</span> Composición porcentual del total de préstamos en moneda local otorgados al sector privado. No incluye operaciones en
           moneda extranjera.
         </p>

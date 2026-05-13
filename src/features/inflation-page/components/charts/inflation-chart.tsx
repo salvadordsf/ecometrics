@@ -33,9 +33,9 @@ export const InflationChart = ({
 
   return (
     <section>
-      <header className="flex flex-col items-center">
-        <Subtitle subtitle={`Gráfico inflaciónario`} />
-        <p className="text-center text-md text-text-secondary p-2">
+      <header className="flex flex-col">
+        <Subtitle subtitle={`Gráfico inflacionario`} />
+        <p className="text-md text-text-secondary p-2">
           Evolución de la inflación desde {formatDate(startDate)} al día de hoy,
           en relación a tipos de cambios de USD.
         </p>

@@ -15,61 +15,117 @@ import { UsdVariationCard } from "./cards/exchange/usd-variation";
 import { RealRateARSCard } from "./cards/extern-sector-finance/real-rate-ARS-card";
 import { InflationVarCard } from "./cards/inflation/var-inflation-card";
 
-const VAR_LABEL = [
+export const VAR_LABEL = [
   {
     title: "Inflación mensual",
     description:
-      "Variación porcentual mensual del IPC (Índice de Precios al Consumidor) elaborado por el INDEC (Instituto Nacional de Estadística y Censos), que mide la evolución del costo de una canasta representativa de bienes y servicios. Es el indicador central del ancla nominal de la economía: sobre él se indexan los contratos de alquiler, se negocian las paritarias (acuerdos salariales por sector), se calibra la tasa de política monetaria y se proyecta el tipo de cambio real. Una inflación mensual descendente y sostenida —proceso conocido como desinflación— es condición necesaria para recuperar la demanda de dinero en pesos, reducir el pass-through (traslado de la devaluación a precios) y estabilizar las expectativas inflacionarias.",
+      "Variación porcentual mensual del IPC elaborado por el INDEC, que mide la evolución del costo de una canasta representativa de bienes y servicios. Es el indicador central del ancla nominal: sobre él se indexan contratos de alquiler, se negocian paritarias y se calibra la tasa de política monetaria del BCRA.",
+    high: "Señal de inercia inflacionaria activa. Los agentes anticipan nuevos aumentos y adelantan remarcaciones, generando una profecía autocumplida. Las paritarias exigen cláusulas de actualización más cortas y el BCRA enfrenta presión para subir tasas.",
+    low: "Indica avance del proceso de desinflación. Recupera la demanda de dinero en pesos, reduce el pass-through cambiario y habilita la baja de tasas de interés reales sin perder credibilidad nominal.",
+    relations: [
+      "Una inflación mensual alta presiona el TCR (Tipo de Cambio Real) a la baja si el oficial no acompaña, erosionando competitividad exportadora.",
+      "Expectativas desancladas (REM) suelen anticipar en 1-2 meses aceleraciones del IPC efectivo.",
+      "La tasa real en pesos (BADLAR vs IPC) determina si el ahorro en pesos tiene sentido o si se incentiva la dolarización de portafolios.",
+    ],
   },
   {
     title: "Inflación interanual",
     description:
-      "Variación porcentual del IPC (Índice de Precios al Consumidor) respecto del mismo mes del año anterior, elaborada por el INDEC. A diferencia de la inflación mensual, la medición interanual captura el efecto acumulado de doce meses de variaciones de precios, suavizando los shocks transitorios. Es la referencia estándar para comparaciones internacionales, para indexar contratos de largo plazo y para evaluar el desempeño del ancla nominal a lo largo del tiempo. En un proceso de desinflación, la caída del dato interanual es más lenta que la del dato mensual, lo que puede generar un efecto base (base effect) que distorsiona la lectura del momentum inflacionario real.",
+      "Variación porcentual del IPC respecto del mismo mes del año anterior, elaborada por el INDEC. Captura el efecto acumulado de doce meses de variaciones de precios, suavizando shocks transitorios. Es la referencia estándar para comparaciones internacionales y para indexar contratos de largo plazo.",
+    high: "Refleja un período prolongado de alta inflación. Aunque el dato mensual esté bajando, el interanual tarda en ceder por el efecto base (base effect): los meses de alta inflación del año anterior sostienen el porcentaje acumulado artificialmente elevado.",
+    low: "Confirma que la desinflación es sostenida y no un fenómeno de uno o dos meses. Es la señal que el mercado necesita para reducir la prima de riesgo inflacionario en contratos y activos financieros.",
+    relations: [
+      "La caída del interanual es siempre más lenta que la del mensual en procesos de desinflación: el efecto base puede distorsionar la lectura del momentum real.",
+      "Es el índice que usan los organismos internacionales (FMI, Banco Mundial) para evaluar la estabilidad de precios en Argentina.",
+    ],
   },
   {
     title: "Expectativas de inflación a 12 meses (REM)",
     description:
-      "Mediana de las proyecciones de inflación para los próximos doce meses relevadas mensualmente por el BCRA a través del REM (Relevamiento de Expectativas de Mercado), que consolida las estimaciones de bancos, consultoras y centros de investigación. Las expectativas de inflación son un insumo crítico para la política monetaria: cuando están desancladas —es decir, cuando el mercado anticipa una inflación persistentemente alta—, los agentes adelantan aumentos de precios y salarios, generando una profecía autocumplida. La convergencia entre las expectativas del REM y la meta de inflación del BCRA es una señal de credibilidad de la política monetaria.",
+      "Mediana de las proyecciones de inflación para los próximos doce meses relevadas mensualmente por el BCRA a través del REM (Relevamiento de Expectativas de Mercado), que consolida estimaciones de bancos, consultoras y centros de investigación.",
+    high: "Expectativas desancladas: los agentes económicos ya incorporaron inflación futura en sus decisiones de precios y salarios hoy. El BCRA pierde efectividad de la política monetaria y cualquier shock externo se amplifica.",
+    low: "Expectativas ancladas son condición necesaria —aunque no suficiente— para la convergencia nominal. Habilita tasas de interés más bajas sin acelerar la inflación y reduce el costo del crédito en pesos.",
+    relations: [
+      "Cuando el REM diverge sistemáticamente del dato efectivo del INDEC, es señal de falta de credibilidad institucional o de interferencia en la estadística oficial.",
+      "Las paritarias sindicales toman el REM como piso de negociación: expectativas altas implican salarios nominales más altos, retroalimentando el ciclo.",
+    ],
   },
   {
     title: "Variación mensual del tipo de cambio",
     description:
-      "Mide la depreciación mensual del ARS (peso argentino) frente al USD (dólar estadounidense) en el mercado oficial, operado a través del MULC (Mercado Único y Libre de Cambios). En economías con alto pass-through como Argentina, una depreciación brusca del tipo de cambio nominal se traslada casi de inmediato a precios domésticos, retroalimentando el proceso inflacionario. El TCR (Tipo de Cambio Real), que ajusta el nominal por el diferencial de inflación entre Argentina y sus socios comerciales, determina la competitividad exportadora. La brecha entre el tipo de cambio oficial y los tipos de cambio paralelos —CCL (Contado con Liquidación) y dólar blue— refleja el nivel de represión cambiaria y las expectativas de devaluación del mercado.",
+      "Depreciación mensual del ARS frente al USD en el mercado oficial (MULC). En Argentina, el alto pass-through implica que una devaluación brusca se traslada casi de inmediato a precios domésticos, retroalimentando la inflación. El TCR determina la competitividad exportadora.",
+    high: "Devaluación acelerada del oficial. Impacto inflacionario inmediato vía costos de importación y expectativas. Los exportadores liquidan divisas más rápido anticipando nueva apreciación; los importadores adelantan compras.",
+    low: "Tipo de cambio estable o con crawling peg lento. Ancla nominal efectiva a corto plazo, pero si la inflación supera la depreciación del oficial, el TCR se aprecia y erosiona la competitividad exportadora gradualmente.",
+    relations: [
+      "La brecha entre el oficial y el CCL/blue refleja el nivel de represión cambiaria y las expectativas de salto discreto del tipo de cambio.",
+      "Una devaluación del oficial reduce la brecha cambiaria pero genera un pico inflacionario inmediato (pass-through).",
+    ],
   },
   {
     title: "Brecha cambiaria (CCL / Oficial)",
     description:
-      "Diferencia porcentual entre el tipo de cambio CCL (Contado con Liquidación) y el tipo de cambio oficial mayorista. El CCL es el tipo de cambio implícito que surge de comprar un activo financiero en pesos en Argentina —típicamente un bono soberano o una acción de empresa local con ADR— y venderlo en dólares en el exterior. Refleja el precio de mercado del dólar para quienes buscan dolarizar portafolios sorteando el cepo cambiario. Una brecha elevada indica represión cambiaria intensa, señaliza expectativas de devaluación del oficial y desincentiva el ingreso de divisas por exportaciones, ya que los exportadores prefieren liquidar lo mínimo obligatorio y retener el stock esperando una convergencia al alza del oficial.",
+      "Diferencia porcentual entre el CCL (Contado con Liquidación) y el tipo de cambio oficial mayorista. El CCL es el precio implícito del dólar que surge de comprar un activo en pesos en Argentina y venderlo en dólares en el exterior, sorteando el cepo cambiario.",
+    high: "Represión cambiaria intensa. Los exportadores retienen stocks esperando una convergencia del oficial al CCL. El BCRA pierde reservas interviniendo para sostener el oficial y el mercado descuenta un salto cambiario.",
+    low: "Brecha reducida indica menor presión sobre el cepo y mayor confianza en la política cambiaria. Facilita la unificación cambiaria y reduce el incentivo a la subfacturación de exportaciones.",
+    relations: [
+      "Brecha alta desincentiva el ingreso de divisas: el exportador liquida lo mínimo obligatorio y retiene el resto.",
+      "Una reducción sostenida de la brecha es condición necesaria para levantar el cepo sin un salto inflacionario descontrolado.",
+    ],
   },
   {
     title: "Brecha MEP (Bolsa / Oficial)",
     description:
-      "Diferencia porcentual entre el tipo de cambio MEP (Mercado Electrónico de Pagos), también llamado dólar bolsa, y el tipo de cambio oficial. El MEP surge de comprar un bono en pesos en el mercado local y venderlo en dólares dentro del mismo sistema financiero argentino, sin transferir divisas al exterior. A diferencia del CCL, la operación no implica salida de capitales del país, lo que la hace legalmente menos restrictiva. El MEP suele cotizar por debajo del CCL pero por encima del oficial, y su brecha es un indicador de la demanda de cobertura cambiaria de agentes que operan dentro del sistema financiero local.",
-  },
-  {
-    title: "Brecha Mayorista (Mayorista / Oficial)",
-    description:
-      "Diferencia porcentual entre el tipo de cambio mayorista —el que rige las operaciones interbancarias y de comercio exterior en el MULC— y el tipo de cambio minorista de referencia publicado por el BCRA. Esta brecha captura la segmentación interna del mercado cambiario oficial: los grandes operadores (exportadores, importadores, bancos) acceden al mayorista, mientras que el minorista aplica a personas físicas y pequeñas transacciones. Una brecha mayorista-minorista negativa indica que el mayorista cotiza por debajo del oficial minorista, lo que puede reflejar ajustes estacionales o técnicos en la banda de flotación.",
+      "Diferencia porcentual entre el dólar MEP (Mercado Electrónico de Pagos) y el tipo de cambio oficial. Surge de comprar un bono en pesos y venderlo en dólares dentro del sistema financiero argentino, sin salida de divisas al exterior.",
+    high: "Alta demanda de cobertura cambiaria dentro del sistema financiero local. Señal de desconfianza en el peso entre agentes que operan formalmente pero buscan dolarizar liquidez sin violar el cepo.",
+    low: "Demanda de cobertura moderada. El MEP por debajo del CCL y cerca del oficial indica menor presión del sector financiero formal sobre el tipo de cambio.",
+    relations: [
+      "El MEP suele cotizar entre el oficial y el CCL, actuando como indicador del piso de la brecha financiera.",
+      "Para empresas con operaciones en Argentina, el MEP es el canal legal más accesible para dolarizar excedentes de caja.",
+    ],
   },
   {
     title: "Brecha blue (Blue / Oficial)",
     description:
-      "Diferencia porcentual entre el tipo de cambio informal —popularmente conocido como dólar blue— y el tipo de cambio oficial minorista. El dólar blue opera en el mercado informal fuera del sistema financiero regulado, sin ningún respaldo institucional, y su precio refleja la demanda de dolarización de sectores que no pueden o no quieren acceder a los canales formales. Históricamente ha sido el indicador más visible de la presión sobre el peso para el público general. Aunque su volumen de transacciones es menor que el CCL, su nivel influye en las expectativas de la población y en la indexación informal de contratos y precios en sectores de la economía real.",
+      "Diferencia porcentual entre el dólar informal (blue) y el tipo de cambio oficial minorista. Opera fuera del sistema financiero regulado y refleja la demanda de dolarización de sectores que no acceden o no quieren acceder a los canales formales.",
+    high: "Fuerte presión dolarizadora informal. El blue influye en la indexación informal de contratos y precios en sectores de la economía real, especialmente alquileres, construcción y comercio minorista.",
+    low: "Menor presión informal sobre el tipo de cambio. Históricamente asociado a períodos de estabilidad relativa o de represión efectiva del mercado informal por parte de las autoridades.",
+    relations: [
+      "Aunque su volumen es menor que el CCL, el blue es el indicador más visible para el público general e impacta directamente en las expectativas de la población.",
+      "Una brecha blue elevada y persistente precede históricamente a crisis cambiarias en Argentina.",
+    ],
   },
   {
     title: "Reservas internacionales",
     description:
-      "El BCRA (Banco Central de la República Argentina) acumula divisas extranjeras —principalmente USD (dólares estadounidenses), DEG (Derechos Especiales de Giro del FMI) y oro— que constituyen el respaldo soberano de la base monetaria. Estas reservas brutas determinan la capacidad de intervención cambiaria del Central y el nivel de cobertura de importaciones, medido en meses de cobertura. Cuando las RIN (Reservas Internacionales Netas, descontados los pasivos en moneda extranjera) caen, el mercado descuenta mayor riesgo de un evento de stress cambiario o default de deuda externa. Un nivel sólido de reservas reduce el riesgo país, comprime el spread soberano y es condición necesaria para sostener cualquier régimen cambiario, ya sea de flotación administrada o convertibilidad.",
+      "Divisas extranjeras acumuladas por el BCRA —principalmente USD, DEG del FMI y oro— que constituyen el respaldo soberano de la base monetaria y determinan la capacidad de intervención cambiaria. Las RIN (Reservas Netas) descuentan los pasivos en moneda extranjera.",
+    high: "El BCRA tiene capacidad de intervención sostenida. Reduce el riesgo país, comprime el spread soberano y da margen para sostener el tipo de cambio oficial sin salto discreto.",
+    low: "RIN negativas o en caída implican vulnerabilidad cambiaria severa. El mercado descuenta mayor probabilidad de devaluación o default de deuda externa. Los importadores enfrentan restricciones de acceso al MULC.",
+    relations: [
+      "El nivel de reservas en meses de importaciones es el indicador de cobertura estándar: menos de 3 meses se considera zona de stress.",
+      "Las metas de acumulación de reservas son el principal ancla cuantitativa de los acuerdos con el FMI.",
+    ],
   },
   {
     title: "Tasa real mensual en pesos",
     description:
-      "Indicador que mide el rendimiento efectivo del ahorro en ARS (pesos argentinos) una vez descontado el efecto erosivo de la inflación. Se construye mensualizado la tasa BADLAR (Buenos Aires Deposits of Large Amount Rate), que es la tasa pasiva promedio que pagan los bancos privados por depósitos a plazo fijo mayoristas de más de $1M a 30-35 días, y aplicando la ecuación de Fisher: tasa real = (1 + TEM) / (1 + π) − 1, donde TEM es la Tasa Efectiva Mensual y π es la inflación mensual. Una tasa real negativa implica que el rendimiento nominal no compensa la pérdida de poder adquisitivo, generando un incentivo estructural a la dolarización de portafolios y presionando sobre las RIN (Reservas Internacionales Netas) del BCRA.",
+      "Rendimiento efectivo del ahorro en ARS descontada la inflación mensual. Se construye mensualizada la tasa BADLAR (depósitos a plazo fijo mayoristas +$1M a 30-35 días) aplicando la ecuación de Fisher: tasa real = (1 + TEM) / (1 + π) − 1.",
+    high: "Tasa real positiva: el ahorro en pesos rinde por encima de la inflación. Incentiva la permanencia en pesos, reduce la presión sobre el tipo de cambio y fortalece las reservas del BCRA.",
+    low: "Tasa real negativa: el rendimiento nominal no compensa la pérdida de poder adquisitivo. Genera incentivo estructural a la dolarización de portafolios y presiona sobre las RIN del BCRA.",
+    relations: [
+      "Una tasa real fuertemente negativa es insostenible: los depositantes migran a dólares o activos reales, retroalimentando la presión cambiaria.",
+      "El BCRA usa la tasa de política monetaria para influir sobre la BADLAR, pero el pass-through es parcial y con rezago.",
+    ],
   },
   {
     title: "Dolarización de depósitos del sector privado",
     description:
-      "Proporción de los depósitos bancarios del sector privado denominados en moneda extranjera (principalmente USD) sobre el total de depósitos del sistema financiero. Es un indicador estructural del grado de bimonetarismo de la economía argentina: a mayor porcentaje, mayor es la preferencia por el dólar como reserva de valor y unidad de cuenta en el sector privado. Un incremento sostenido señala pérdida de confianza en el peso como reserva de valor, típicamente asociada a expectativas de devaluación o aceleración inflacionaria. Históricamente, episodios de crisis cambiaria en Argentina han ido precedidos de aumentos pronunciados en este indicador.",
+      "Proporción de depósitos bancarios del sector privado en moneda extranjera sobre el total del sistema financiero. Indicador estructural del bimonetarismo argentino: a mayor porcentaje, mayor preferencia por el dólar como reserva de valor y unidad de cuenta.",
+    high: "Pérdida de confianza en el peso como reserva de valor. Los agentes migran a dólares anticipando devaluación o aceleración inflacionaria. Episodios de suba pronunciada han precedido históricamente las grandes crisis cambiarias argentinas.",
+    low: "Mayor confianza relativa en el peso. En contextos de tasas reales positivas y brecha cambiaria baja, los agentes están dispuestos a mantener liquidez en moneda local.",
+    relations: [
+      "Una suba sostenida de este indicador es una señal temprana (leading indicator) de stress cambiario, más confiable que la brecha blue por su base de datos formal.",
+      "Los depósitos en dólares están encajados en el BCRA: su retiro masivo presiona directamente sobre las reservas brutas.",
+    ],
   },
 ];
 
@@ -123,6 +179,9 @@ export default function MainEconomicsStats() {
               key={economicVar.title}
               title={economicVar.title}
               description={economicVar.description}
+              high={economicVar.high}
+              low={economicVar.low}
+              relations={economicVar.relations}
             />
           ))}
       </section>

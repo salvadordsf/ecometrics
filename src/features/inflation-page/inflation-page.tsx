@@ -1,6 +1,7 @@
 import { Title } from "@/src/components/ui/title";
 import { InflationChartContainer } from "./components/charts/inflation-chart-container";
 import { InflationMainCards } from "./components/main-cards/inflation-main-cards";
+import { InflationByCategoryChartContainer } from "./components/charts/inflation-by-category/inflation-by-category-chart-container";
 
 export const InflationPage = () => {
   return (
@@ -17,6 +18,9 @@ export const InflationPage = () => {
       </main>
       <section className="w-full">
         <InflationChartContainer />
+      </section>
+      <section className="w-full pb-10">
+        <InflationByCategoryChartContainer />
       </section>
     </section>
   );

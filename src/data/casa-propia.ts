@@ -40,6 +40,7 @@ const casaPropiaRecord: RecordType[] = [
   ["2026-03-01", 1.0229],
   ["2026-04-01", 1.0227],
   ["2026-05-01", 1.0229],
+  ["2026-06-01", 1.0230],
 ];
 
 const casaPropiaDataData: IRecordResponse = {
