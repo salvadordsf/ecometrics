@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import {
   getInflation,
+  getInflationByCategories,
   getLastAnnualInflation,
   getLastInflation,
   getREMInflation,
@@ -46,6 +47,18 @@ export const useInflation = (limit = 3000) => {
   return useQuery({
     queryKey: ["inflation", limit],
     queryFn: () => getInflation(limit),
+
+    staleTime: 1000 * 60 * 60 * 24,
+    gcTime: 1000 * 60 * 60 * 24,
+    retry: 2,
+    refetchOnWindowFocus: false,
+  });
+};
+
+export const useInflationByCategories = (startDate = "2023-12-01") => {
+  return useQuery({
+    queryKey: ["inflationByCategories", startDate],
+    queryFn: () => getInflationByCategories(startDate),
 
     staleTime: 1000 * 60 * 60 * 24,
     gcTime: 1000 * 60 * 60 * 24,
