@@ -1,3 +1,5 @@
+
+
 // Interface for the returned objects for last records
 export interface ILastRecordResponse {
   title: string;
@@ -128,4 +130,88 @@ export interface IPrivateDebts {
     debtType: string;
     records: RecordType[]; // [date, value][]
   }[];
+}
+
+// Interface for the returned object for the IPCs records by category
+export interface IInflationByCategories {
+  title: string;
+  source: string;
+  periodicity: "monthly";
+  unit: "%";
+  lastDate: string;
+  labels: {
+    periodicity: "mensual";
+    unit: "%";
+    lastDate: string;
+  };
+  records: {
+    date: string;
+    alimentos: number;
+    alcoholTabaco: number;
+    bienesServicios: number;
+    comunicaciones: number;
+    educacion: number;
+    mantenimientoHogar: number;
+    vestimenta: number;
+    cultura: number;
+    hotelRestaurant: number;
+    salud: number;
+    transporte: number;
+    viviendaServicios: number;
+    general: number;
+  }[];
+  individualRecords: {
+    alimentos: {
+      title: string;
+      record: RecordType[];
+    }
+    alcoholTabaco: {
+      title: string;
+      record: RecordType[];
+    }
+    bienesServicios: {
+      title: string;
+      record: RecordType[];
+    }
+    comunicaciones: {
+      title: string;
+      record: RecordType[];
+    }
+    educacion: {
+      title: string;
+      record: RecordType[];
+    }
+    mantenimientoHogar: {
+      title: string;
+      record: RecordType[];
+    }
+    vestimenta: {
+      title: string;
+      record: RecordType[];
+    }
+    cultura: {
+      title: string;
+      record: RecordType[];
+    }
+    hotelRestaurant: {
+      title: string;
+      record: RecordType[];
+    }
+    salud: {
+      title: string;
+      record: RecordType[];
+    }
+    transporte: {
+      title: string;
+      record: RecordType[];
+    }
+    viviendaServicios: {
+      title: string;
+      record: RecordType[];
+    }
+    general: {
+      title: string;
+      record: RecordType[];
+    }
+  };
 }
